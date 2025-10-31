@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "inter", sans-serif;
+}
+
+.Layout{
+    display: flex;
+    background-color: #F3F4F6;
+}
+
+main{
+    flex: 1;
+    border-radius: 8px;
+    background-color: #F9FAFB;
+    margin: 8px;
+    padding: 8px;
+    border: 0px solid black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+}
