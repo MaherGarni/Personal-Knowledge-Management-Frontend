@@ -2,12 +2,15 @@ import "./styles.css";
 import { Brush, Plus, Trash, ChevronRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import ChangeColor from "../Modals/ChangeColor";
+import DeleteConformation from "../Modals/DeleteConformation";
+import CreateCategory from "../Modals/CreateCategory";
 
-export default function CategoryIndexCard({ category, updateCategories }) {
-    // const [currCategory, setCurrCategory] = useState(category) // tried to store the state here, and pass them down below
+export default function CategoryIndexCard({ category, setCatTree }) {
     const hasChildren = category.children && category.children.length > 0;
     const [showDetail, setShowDetail] = useState(false);
-    const [openModal, setOpenModal] = useState(false)
+    const [openModalUpdateColor, setOpenModalUpdateColor] = useState(false)
+    const [openModalConfirmDeletion, setOpenModalConfirmDeletion] = useState(false)
+    const [openModalCreateCategory, setOpenModalCreateCategory] = useState(false)
 
     const toggleOpen = () => setShowDetail((prev) => !prev);
 
@@ -16,7 +19,7 @@ export default function CategoryIndexCard({ category, updateCategories }) {
     return (
         <>
             <div className="category-card">
-                <div className="category-detail" style={{ paddingLeft: `${(category.data.hierarchy - 1) * 40}px` }}>
+                <div className="category-detail" style={{ paddingLeft: `${(category.hierarchy - 1) * 40}px` }}>
                     <strong>
                         {category.children.length > 0 &&
                             <span className="category-toggle" onClick={toggleOpen}>
@@ -30,22 +33,22 @@ export default function CategoryIndexCard({ category, updateCategories }) {
                         }
                         <span
                             className="category-color-dot"
-                            style={{ backgroundColor: category.data.color || '#9CA3AF' }}
+                            style={{ backgroundColor: category.color || '#9CA3AF' }}
                         />
-                        {category.data.name}
+                        {category.name}
                     </strong>
                 </div>
                 <div className="category-actions">
-                    <button onClick={() => setOpenModal(true)}>
+                    <button onClick={() => setOpenModalUpdateColor(true)}>
                         <Brush size={16} />
                     </button>
-                    {category.data.hierarchy === 2 &&
-                        <button onClick={() => setOpenModal(true)}>
+                    {category.hierarchy === 2 &&
+                        <button onClick={() => setOpenModalCreateCategory(true)}>
                             <Plus size={16} />
                         </button>
                     }
-                    {category.data.hierarchy === 3 &&
-                        <button onClick={() => setOpenModal(true)}>
+                    {category.hierarchy === 3 &&
+                        <button onClick={() => setOpenModalConfirmDeletion(true)}>
                             <Trash size={16} />
                         </button>
                     }
@@ -55,12 +58,18 @@ export default function CategoryIndexCard({ category, updateCategories }) {
                 hasChildren && showDetail &&
                 <div className="category-children">
                     {category.children.map(child => {
-                        return <CategoryIndexCard key={child.data.id} category={child} updateCategories={updateCategories} />
+                        return <CategoryIndexCard key={child.id} category={child} setCatTree={setCatTree} />
                     })}
                 </div>
             }
-            {openModal &&
-                <ChangeColor openModal={openModal} setOpenModal={setOpenModal} category={category} updateCategories={updateCategories} />
+            {openModalUpdateColor &&
+                <ChangeColor openModalUpdateColor={openModalUpdateColor} setOpenModalUpdateColor={setOpenModalUpdateColor} category={category} setCatTree={setCatTree} />
+            }
+            {openModalConfirmDeletion &&
+                <DeleteConformation openModalConfirmDeletion={openModalConfirmDeletion} setOpenModalConfirmDeletion={setOpenModalConfirmDeletion} category={category} setCatTree={setCatTree} />
+            }
+            {openModalCreateCategory &&
+                <CreateCategory openModalCreateCategory={openModalCreateCategory} setOpenModalCreateCategory={setOpenModalCreateCategory} category={category} setCatTree={setCatTree} />
             }
         </>
     )

@@ -4,9 +4,7 @@ import { X } from "lucide-react";
 
 import * as categoryAPI from "../../utilities/category-api"
 
-export default function DeleteConformation({ openModal, setOpenModal, category, updateCategories }) {
-    const initialState = { name: category.data.name, parent: category.parent, hierarchy: category.data.hierarchy, color: `${category.data.color}` }
-    const [formData, setFormData] = useState(initialState);
+export default function DeleteConformation({ openModalConfirmDeletion, setOpenModalConfirmDeletion, category, setCatTree }) {
 
     function handleChange(evt) {
         setFormData({ ...formData, [evt.target.name]: evt.target.value })
@@ -15,34 +13,31 @@ export default function DeleteConformation({ openModal, setOpenModal, category, 
     async function handleSubmit(evt) {
         try {
             evt.preventDefault();
-            console.log(formData, "frontend, line 18")
-            const updatedCategories = await categoryAPI.update(formData, category.data.id)
-            updateCategories(updatedCategories)
-            // setCurrCategory(updateColor) // tried to update the state from here
-            // console.dir(updateColor)
-            setOpenModal(false)
+            const updatedCategories = await categoryAPI.deleteCategory(category.id)
+            setCatTree(updatedCategories)
+            
+            setOpenModalConfirmDeletion(false)
         } catch (error) {
             console.log(error)
         }
     }
 
-    if (!openModal) return null;
+    if (!openModalConfirmDeletion) return null;
     return (
         <>
-            {openModal &&
+            {openModalConfirmDeletion &&
                 <div className="modal-overlay">
                     <div className="color-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header" >
                             <p>Confirm deletion</p>
-                            <button onClick={() => setOpenModal(false)}>
+                            <button onClick={() => setOpenModalConfirmDeletion(false)}>
                                 <X size={16} />
                             </button>
                         </div>
-                        <span id="modal-note"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, doloremque.</p></span>
+                        <span id="modal-note"><p>note theat deleting category will delete all related lessons, you want to confirm</p></span>
                         <form className="modal-form" onSubmit={handleSubmit}>
-                            <input type="color" placeholder="color" name="color" value={formData.color} onChange={handleChange} />
                             <div className="modal-form-actions">
-                                <button type="button" onClick={() => setOpenModal(false)}>Cancel</button>
+                                <button type="button" onClick={() => setOpenModalConfirmDeletion(false)}>Cancel</button>
                                 <button type="submit">Submit</button>
                             </div>
                         </form>

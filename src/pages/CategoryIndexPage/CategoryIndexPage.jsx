@@ -13,9 +13,8 @@ export default function CategoryIndexPage() {
         async function getAllCategories() {
             try {
                 const categoriesData = await categoryAPI.index()
-                const categoryTree = createCategoryTree(categoriesData);
-                console.log(categoryTree, "test tree!!!")
-                setCatTree(categoryTree)
+                console.log(categoriesData, "cat data")
+                setCatTree(categoriesData)
             } catch (err) {
                 console.log(err);
             }
@@ -23,18 +22,10 @@ export default function CategoryIndexPage() {
         getAllCategories()
     }, [])
 
-    function updateCategories(updatedCategories) {
-        const categoryTree = createCategoryTree(updatedCategories);
-        console.log(categoryTree, "test tree!!!")
-        setCatTree(categoryTree)
-    }
 
 
+    const displayAllCategories = catTree.map((c, ind) => <CategoryIndexCard key={ind} category={c} setCatTree={setCatTree}/>);
 
-
-
-    const displayAllCategories = catTree.map((c, ind) => <CategoryIndexCard key={ind} category={c} updateCategories={updateCategories}/>);
-    console.log(catTree)
     return (
         <>
             <section className="categories-section">
