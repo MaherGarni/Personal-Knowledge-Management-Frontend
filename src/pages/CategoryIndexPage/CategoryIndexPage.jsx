@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import createCategoryTree from "./helperFunction";
 import CategoryIndexCard from "../../components/CategoryIndexCard/CategoryIndexCard";
 
+
 import * as categoryAPI from "../../utilities/category-api"
 
 export default function CategoryIndexPage() {
@@ -22,17 +23,28 @@ export default function CategoryIndexPage() {
         getAllCategories()
     }, [])
 
-    // recursively build each category layer via component
+    function updateCategories(updatedCategories) {
+        const categoryTree = createCategoryTree(updatedCategories);
+        console.log(categoryTree, "test tree!!!")
+        setCatTree(categoryTree)
+    }
 
 
 
 
 
-    const displayAllCategories = catTree.map((c, ind) => <CategoryIndexCard key={ind} category={c} />);
-
+    const displayAllCategories = catTree.map((c, ind) => <CategoryIndexCard key={ind} category={c} updateCategories={updateCategories}/>);
+    console.log(catTree)
     return (
-        <section>
-            {displayAllCategories}
-        </section>
+        <>
+            <section className="categories-section">
+                <div className="section-header">
+                    <h2>Categories</h2>
+                </div>
+                <div className="categories-container">
+                    {displayAllCategories}
+                </div>
+            </section>
+        </>
     )
 }

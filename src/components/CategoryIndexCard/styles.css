@@ -1,0 +1,48 @@
+.category-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #F9FAFB; */
+    border-bottom: 1px solid #E5E7EB;
+    padding: 16px 8px;
+    margin-bottom: 8px;
+}
+
+.category-color-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 16px;
+}
+
+.category-card:last-child {
+    border-bottom: none;
+}
+
+.category-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    color: #6b7280;
+}
+
+.category-toggle:hover {
+    cursor: pointer;
+    color: #111827;
+}
+
+.category-actions {
+    display: flex;
+    gap: 16px;
+    button {
+        border: none;
+        color: #6b7280;
+    }
+
+    button:hover {
+        cursor: pointer;
+        color: #111827;
+    }
+}
