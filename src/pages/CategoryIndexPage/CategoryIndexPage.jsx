@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import createCategoryTree from "./helperFunction";
 import CategoryIndexCard from "../../components/CategoryIndexCard/CategoryIndexCard";
 
-
 import * as categoryAPI from "../../utilities/category-api"
 
 export default function CategoryIndexPage() {
@@ -13,7 +12,6 @@ export default function CategoryIndexPage() {
         async function getAllCategories() {
             try {
                 const categoriesData = await categoryAPI.index()
-                console.log(categoriesData, "cat data")
                 setCatTree(categoriesData)
             } catch (err) {
                 console.log(err);

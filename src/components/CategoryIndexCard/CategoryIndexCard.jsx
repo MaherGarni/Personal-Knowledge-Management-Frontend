@@ -1,6 +1,7 @@
 import "./styles.css";
 import { Brush, Plus, Trash, ChevronRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 import ChangeColor from "../Modals/ChangeColor";
 import DeleteConformation from "../Modals/DeleteConformation";
 import CreateCategory from "../Modals/CreateCategory";
@@ -20,23 +21,33 @@ export default function CategoryIndexCard({ category, setCatTree }) {
         <>
             <div className="category-card">
                 <div className="category-detail" style={{ paddingLeft: `${(category.hierarchy - 1) * 40}px` }}>
-                    <strong>
-                        {category.children.length > 0 &&
-                            <span className="category-toggle" onClick={toggleOpen}>
-                                {showDetail
-                                    ?
-                                    <ChevronDown size={16} />
-                                    :
-                                    <ChevronRight size={16} />
-                                }
-                            </span>
-                        }
-                        <span
-                            className="category-color-dot"
-                            style={{ backgroundColor: category.color || '#9CA3AF' }}
-                        />
-                        {category.name}
-                    </strong>
+                    {category.children.length > 0 &&
+                        <span className="category-toggle" onClick={toggleOpen}>
+                            {showDetail
+                                ?
+                                <ChevronDown size={16} />
+                                :
+                                <ChevronRight size={16} />
+                            }
+                        </span>
+                    }
+                    <span
+                        className="category-color-dot"
+                        style={{ backgroundColor: category.color || '#9CA3AF' }}
+                    />
+                    {
+                        category.hierarchy === 3
+                            ?
+                            <Link to={`/categories/${category.id}`}>
+                                <strong>
+                                    {category.name}
+                                </strong>
+                            </Link>
+                            :
+                            <strong>
+                                {category.name}
+                            </strong>
+                    }
                 </div>
                 <div className="category-actions">
                     <button onClick={() => setOpenModalUpdateColor(true)}>

@@ -1,0 +1,39 @@
+.lesson-detail-container {
+    margin: 16px;
+    margin-top: 48px;
+
+    .lesson-detail {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        p {
+            width: 60ch;
+            /* wraps around ~60 characters per line */
+            line-height: 1.5;
+        }
+
+        input {
+            width: 60ch;
+            /* wraps around ~60 characters per line */
+            line-height: 1.5;
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* input:focus{
+            border: none;
+        } */
+    }
+}
+
+.greyed-out {
+    color: #6b7280;
+}

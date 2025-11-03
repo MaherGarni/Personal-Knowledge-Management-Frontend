@@ -1,0 +1,43 @@
+.category-layout {
+    display: flex;
+    position: relative;
+    background-color: #F3F4F6;
+}
+
+.category-lessons {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100vh;
+    background-color: #F3F4F6;
+    padding: 16px;
+
+}
+
+.lessons-container {
+    margin-top: 16px;
+
+    .add-lesson {
+        background-color: #F9FAFB;;
+        border: .5px solid #E5E7EB;
+        border-radius: 8px;
+        width: 100%;
+        padding: 8px;
+        margin: 16px 0;
+    }
+
+    .add-lesson:hover {
+        background-color: #F3F4F6;
+        cursor: pointer;
+    }
+}
+
+.lesson-detail-page {
+    flex: 1;
+    border-radius: 8px;
+    background-color: #F9FAFB;
+    /* margin: 16px 0; */
+    /* padding: 8px;  */
+    border-left: 1px solid #E5E7EB;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+}

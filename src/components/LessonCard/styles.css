@@ -1,0 +1,33 @@
+.lesson-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 8px;
+}
+
+.lesson-card:hover {
+    background-color: #F9FAFB;
+    cursor: pointer;
+    border-radius: 8px;
+    border-color: violet;
+}
+
+.lesson-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lesson-card-actions {
+    display: flex;
+    gap: 8px;
+    button {
+        border: none;
+        color: #6b7280;
+    }
+
+    button:hover {
+        cursor: pointer;
+        color: #111827;
+    }
+}

@@ -16,3 +16,19 @@ export async function update(formData, categoryId) {
 export async function deleteCategory(categoryId) {
     return sendRequest(`${baseURL}${categoryId}/`, "DELETE")
 }
+
+export async function detail(categoryId) {
+    return sendRequest(`${baseURL}${categoryId}/`)
+}
+
+export function createLesson(formData, categoryId){
+    return sendRequest(`${baseURL}${categoryId}/lessons/`, "POST", formData)
+}
+
+export async function deleteLesson(lessonId) {
+    return sendRequest(`/lessons/${lessonId}/`, "DELETE")
+}
+
+export async function updateLesson(formData, lessonId) {
+    return sendRequest(`/lessons/${lessonId}/`, "PUT", formData)
+}

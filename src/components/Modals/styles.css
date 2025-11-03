@@ -36,6 +36,14 @@
         margin: 8px 0;
     }
 
+    .form-textarea{
+        resize: none;
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        line-height: 2;
+    }
+
     .modal-form-actions{
         display: flex;
         justify-content: flex-end;

@@ -21,9 +21,6 @@
 }
 
 .category-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 6px;
     color: #6b7280;
 }
@@ -31,6 +28,12 @@
 .category-toggle:hover {
     cursor: pointer;
     color: #111827;
+}
+
+.category-detail{
+    a{
+        color: #111827;
+    }
 }
 
 .category-actions {

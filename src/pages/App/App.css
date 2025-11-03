@@ -16,8 +16,8 @@ main{
     flex: 1;
     border-radius: 8px;
     background-color: #F9FAFB;
-    margin: 8px;
-    padding: 8px;
+    /* margin: 8px;
+    padding: 8px; */
     border: 0px solid black;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
 }
