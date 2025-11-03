@@ -15,8 +15,6 @@ export default function CategoryIndexCard({ category, setCatTree }) {
 
     const toggleOpen = () => setShowDetail((prev) => !prev);
 
-    console.log(category, "check  category component")
-
     return (
         <>
             <div className="category-card">

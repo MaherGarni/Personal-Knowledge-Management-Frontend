@@ -4,7 +4,7 @@ import { Trash, SquarePen } from "lucide-react";
 import DeleteConformationLesson from "../Modals/DeleteConformationLesson";
 import UpdateLesson from "../Modals/UpdateLesson";
 
-export default function LessonCrad({ lesson, setCurrLesson, setLessons }) {
+export default function LessonCrad({ lesson, setCurrLesson, setLessons, category }) {
     const [openModalConfirmDeletion, setOpenModalConfirmDeletion] = useState(false)
     const [openModalFormUpdate, setOpenModalFormUpdate] = useState(false)
 
@@ -35,10 +35,10 @@ export default function LessonCrad({ lesson, setCurrLesson, setLessons }) {
                 </span>
             </div>
             {openModalConfirmDeletion &&
-                <DeleteConformationLesson openModalConfirmDeletion={openModalConfirmDeletion} setOpenModalConfirmDeletion={setOpenModalConfirmDeletion} Lesson={lesson} setLessons={setLessons} />
+                <DeleteConformationLesson openModalConfirmDeletion={openModalConfirmDeletion} setOpenModalConfirmDeletion={setOpenModalConfirmDeletion} Lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} category={category} />
             }
             {openModalFormUpdate &&
-                <UpdateLesson openModalForm={openModalFormUpdate} setOpenModalForm={setOpenModalFormUpdate} lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} />
+                <UpdateLesson openModalForm={openModalFormUpdate} setOpenModalForm={setOpenModalFormUpdate} lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} category={category} />
             }
         </>
     )

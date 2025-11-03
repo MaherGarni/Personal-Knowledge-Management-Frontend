@@ -2,7 +2,7 @@ import "./styles.css"
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router'
 import LessonDetailPage from "../LessonDetailPage/LessonDetailPage"
-import LessonCrad from "../../components/LessonCard/LessonCrad"
+import LessonCard from "../../components/LessonCard/LessonCrad"
 import FormModal from "../../components/Modals/FormModal"
 
 import * as categoryAPI from "../../utilities/category-api"
@@ -21,7 +21,7 @@ export default function CategoryDetailPage() {
                 const categoryDetailData = await categoryAPI.detail(id)
                 setCategory(categoryDetailData.category)
                 setLessons(categoryDetailData.lessons)
-                setCurrLesson(categoryDetailData.lessons[0])
+                setCurrLesson(categoryDetailData.lessons[0] ? categoryDetailData.lessons[0] : null )
             } catch (err) {
                 console.log(err);
             }
@@ -44,13 +44,13 @@ export default function CategoryDetailPage() {
                         <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}>Add new lesson</button>
                         {
                             lessons.map((lesson) => (
-                                <LessonCrad key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons}/>
+                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category}/>
                             ))
                         }
                     </div>
                 </div>
                 <div className="lesson-detail-page">
-                    <LessonDetailPage currLesson={currLesson} />
+                   <LessonDetailPage currLesson={currLesson} />
                 </div>
             </div>
             {openModalForm &&

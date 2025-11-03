@@ -5,8 +5,8 @@ import { X } from "lucide-react";
 import * as categoryAPI from "../../utilities/category-api"
 
 
-export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson }) {
-    const initialState = { title: lesson.title, content: lesson.content }
+export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson, category}) {
+    const initialState = { title: lesson.title, content: lesson.content, category : category.id }
     const [formData, setFormData] = useState(initialState);
 
     function handleChange(evt) {
@@ -16,7 +16,7 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
     async function handleSubmit(evt) {
         try {
             evt.preventDefault();
-            const lessonsData = await categoryAPI.updateLesson(formData, lesson.id)
+            const lessonsData = await categoryAPI.updateLesson(formData, category.id, lesson.id)
             console.log(lessonsData)
             setCurrLesson(lessonsData.lesson)
             setLessons(lessonsData.lessons)

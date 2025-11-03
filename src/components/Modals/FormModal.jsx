@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 import * as categoryAPI from "../../utilities/category-api"
 
 export default function FormModal({ openModalForm, setOpenModalForm, category, setCategory, setLessons, setCurrLesson }) {
-    const initialState = { title: "", content: "" }
+    const initialState = { title: "", content: "" , category: category.id}
     const [formData, setFormData] = useState(initialState);
 
     function handleChange(evt) {

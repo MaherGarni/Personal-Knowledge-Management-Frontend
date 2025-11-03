@@ -25,10 +25,10 @@ export function createLesson(formData, categoryId){
     return sendRequest(`${baseURL}${categoryId}/lessons/`, "POST", formData)
 }
 
-export async function deleteLesson(lessonId) {
-    return sendRequest(`/lessons/${lessonId}/`, "DELETE")
+export async function deleteLesson(categoryId, lessonId) {
+    return sendRequest(`${baseURL}${categoryId}/lessons/${lessonId}/`, "DELETE")
 }
 
-export async function updateLesson(formData, lessonId) {
-    return sendRequest(`/lessons/${lessonId}/`, "PUT", formData)
+export async function updateLesson(formData, categoryId, lessonId) {
+    return sendRequest(`${baseURL}${categoryId}/lessons/${lessonId}/`, "PUT", formData)
 }
