@@ -1,6 +1,7 @@
 .lesson-detail-container {
     margin: 16px;
     margin-top: 48px;
+    max-width: 700px;
 
     .lesson-detail {
         margin-top: 2rem;
@@ -32,6 +33,11 @@
             border: none;
         } */
     }
+}
+
+.lesson-detail-header{
+    display: flex;
+    justify-content: space-between;
 }
 
 .greyed-out {

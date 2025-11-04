@@ -6,7 +6,6 @@ import * as categoryAPI from "../../utilities/category-api"
 import LessonCrad from "../LessonCard/LessonCrad";
 
 export default function DeleteConformationLesson({ openModalConfirmDeletion, setOpenModalConfirmDeletion, Lesson, setLessons, setCurrLesson, category }) {
-    console.log(Lesson, "line 9 , lesson")
 
     async function handleSubmit(evt) {
         try {

@@ -31,13 +31,13 @@ export default function LessonDetailPage({ currLesson }) {
     return (
         <>
             <div className="lesson-detail-container">
+                <div className="lesson-detail-header">
                 <span className="greyed-out">{currLesson.updated_at}</span>
+                <span className="greyed-out"><p></p>{currLesson.score}/10</span>
+                </div>
                 <div className="lesson-detail">
                     <h2>{currLesson.title}</h2>
                     <p>{currLesson.content}</p>
-                    {/* <form action="">
-                        <input type="text" name="content" value={formData.content} onChange={handleChange}/>
-                    </form> */}
                 </div>
             </div>
         </>

@@ -1,4 +1,4 @@
-.color-modal{
+.color-modal {
     display: flex;
     flex-direction: column;
     background-color: #F9FAFB;
@@ -8,26 +8,28 @@
     line-height: 1.5;
 }
 
-.modal-header{
+.modal-header {
     display: flex;
     justify-content: space-between;
 
-    button{
+    button {
         border: none;
         background-color: #F9FAFB;
     }
-    button:hover{
+
+    button:hover {
         cursor: pointer;
         background-color: #F3F4F6;
     }
 }
 
-#modal-note{
-    color:  #6b7280;
+#modal-note {
+    color: #6b7280;
     margin: 8px 0;
 }
-.modal-form{
-    input{
+
+.modal-form {
+    input {
         width: 100%;
         height: 2rem;
         border-radius: 8px;
@@ -36,7 +38,7 @@
         margin: 8px 0;
     }
 
-    .form-textarea{
+    .form-textarea {
         resize: none;
         width: 100%;
         padding: 8px;
@@ -44,20 +46,21 @@
         line-height: 2;
     }
 
-    .modal-form-actions{
+    .modal-form-actions {
         display: flex;
         justify-content: flex-end;
         gap: 8px;
         margin: 8px 0 4px 0;
 
-        button{
+        button {
             padding: 8px;
             border-radius: 8px;
-            background-color: #F9FAFB;;
+            background-color: #F9FAFB;
+            ;
             border: .5px solid #E5E7EB;
         }
 
-        button:hover{
+        button:hover {
             cursor: pointer;
             background-color: #F3F4F6;
         }
@@ -70,9 +73,24 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4); /* semi-transparent dark layer */
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* ensures it’s above everything else */
+    z-index: 1000;
+}
+
+#ok {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #F9FAFB;
+    ;
+    border: .5px solid #E5E7EB;
+
+
+}
+
+#ok:hover {
+    cursor: pointer;
+    background-color: #F3F4F6;
 }

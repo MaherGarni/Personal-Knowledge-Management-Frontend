@@ -20,7 +20,7 @@ export default function CategoryIndexCard({ category, setCatTree }) {
             <div className="category-card">
                 <div className="category-detail" style={{ paddingLeft: `${(category.hierarchy - 1) * 40}px` }}>
                     {category.children.length > 0 &&
-                        <span className="category-toggle" onClick={toggleOpen}>
+                    <span className="category-toggle" onClick={toggleOpen}>
                             {showDetail
                                 ?
                                 <ChevronDown size={16} />
