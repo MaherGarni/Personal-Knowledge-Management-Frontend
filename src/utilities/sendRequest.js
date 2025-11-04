@@ -8,10 +8,10 @@ export default async function sendRequest(url, method = "GET", payload) {
 		options.body = JSON.stringify(payload);
 	}
 
-	// if (token) {
-    //     options.headers = options.headers || {};
-    //     options.headers.Authorization = `Bearer ${token}`;
-    // }
+	if (token) {
+        options.headers = options.headers || {};
+        options.headers.Authorization = `Bearer ${token}`;
+    }
 
 	try {
 		const res = await fetch(`http://127.0.0.1:8000${url}`, options);

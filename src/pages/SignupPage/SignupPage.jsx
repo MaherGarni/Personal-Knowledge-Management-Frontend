@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 
 // APIs
-import * as usersAPI from "../../utilities/users-api.js"
+import * as usersAPI from "../../utilities/user-api.js"
 
 export default function SignupPage({ setUser }) {
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function SignupPage({ setUser }) {
             const newUser = await usersAPI.signup(formData);
             setUser(newUser);
             setFormData(initialState)
-            navigate("/cats")
+            navigate("/categories")
         } catch (err) {
             console.log(err);
             setUser(null);

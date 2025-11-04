@@ -65,7 +65,7 @@ export default function Sidebar({ user, setUser }) {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/signuo">
+                            <Link to="/signup">
                                 <div className="sidebar-link">
                                     <FolderTree size={18} />
                                     <p>SignUp</p>
