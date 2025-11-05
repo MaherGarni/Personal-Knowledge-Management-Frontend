@@ -1,17 +1,32 @@
-# React + Vite
+# Personal Knowledge Management App  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My project idea is to organize skills into structured categories. These categories represent different topics related to the field of software development.
 
-Currently, two official plugins are available:
+The category structure is divided into three levels: main topic → subtopic → sub-subtopic (skill).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Below is a preview of some of the categories included in the system:
 
+![Categories Preview](./assets/categories-overview.png)
 
-## React Compiler
+Users can only create and manage third-level topics (sub-subtopics), which represent specific skills they want to build or track over time.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+For each skill, users can create lesson entries to record what they’ve learned. Each lesson represents new knowledge or an experience gained while developing that skill.
 
-## Expanding the ESLint configuratio
+Over time, these lessons build up to show the user’s progress and growth within each skill.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The system integrates AI features that automatically classify lessons and categories within the correct structure. It also evaluates the user’s skill level based on lesson content and displays the resulting scores and progress on a personalized dashboard.
+
+## Technology Used  
+
+- **React**   
+- **Vite**   
+- **VS Code**    
+- **GitHub**   
+
+## Project Links  
+- **[Backend Repo](https://github.com/MaherGarni/Personal-Knowledge-Management-Backend)**  
+- **[Site link](http://localhost:5173/)**  
+  
+## Icebox Features  
+- Enhance lesson creation UX and allow image uploads.
+
