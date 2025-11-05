@@ -42,9 +42,9 @@ export default function Sidebar({ user, setUser }) {
                                 </div>
                             </Link>
                         </li>
-                        <form id="logout-form" onSubmit={handleLogout}>
+                        {/* <form id="logout-form" onSubmit={handleLogout}>
                             <button type="submit">Log out</button>
-                        </form>
+                        </form> */}
                     </ul>
                 </nav>
             </>
