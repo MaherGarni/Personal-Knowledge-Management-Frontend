@@ -1,96 +1,152 @@
-.color-modal {
-    display: flex;
-    flex-direction: column;
-    background-color: #F9FAFB;
-    width: 400px;
-    border-radius: 8px;
-    padding: 16px;
-    line-height: 1.5;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-
-    button {
-        border: none;
-        background-color: #F9FAFB;
-    }
-
-    button:hover {
-        cursor: pointer;
-        background-color: #F3F4F6;
-    }
-}
-
-#modal-note {
-    color: #6b7280;
-    margin: 8px 0;
-}
-
-.modal-form {
-    input {
-        width: 100%;
-        height: 2rem;
-        border-radius: 8px;
-        border-color: violet;
-        padding: 8px;
-        margin: 8px 0;
-    }
-
-    .form-textarea {
-        resize: none;
-        width: 100%;
-        padding: 8px;
-        border-radius: 8px;
-        line-height: 2;
-    }
-
-    .modal-form-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 8px;
-        margin: 8px 0 4px 0;
-
-        button {
-            padding: 8px;
-            border-radius: 8px;
-            background-color: #F9FAFB;
-            ;
-            border: .5px solid #E5E7EB;
-        }
-
-        button:hover {
-            cursor: pointer;
-            background-color: #F3F4F6;
-        }
-    }
-}
-
+/* Overlay */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
+    inset: 0;
+    background-color: rgba(17, 24, 39, 0.45);
+    /* #111827 at 45% */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-#ok {
-    padding: 8px;
-    border-radius: 8px;
-    background-color: #F9FAFB;
-    ;
-    border: .5px solid #E5E7EB;
-
-
+/* Dialog */
+.color-modal {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 420px;
+    border-radius: 12px;
+    padding: 16px;
+    line-height: 1.5;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.20);
 }
 
+/* Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header p {
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.modal-header button {
+    border: none;
+    background-color: transparent;
+    color: #6b7280;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.modal-header button:hover {
+    cursor: pointer;
+    background-color: #F3F4F6;
+    color: #111827;
+}
+
+/* Body copy */
+#modal-note {
+    color: #6b7280;
+    margin: 8px 0 4px;
+}
+
+/* Form */
+.modal-form {
+    margin-top: 8px;
+}
+
+.modal-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.modal-form input[type="text"],
+.modal-form input[type="email"],
+.modal-form input[type="password"],
+.modal-form .form-textarea {
+    width: 100%;
+    height: 2.4rem;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    /* 👈 no more violet */
+    padding: 8px 10px;
+    margin: 8px 0 12px;
+    font-size: 0.95rem;
+}
+
+.modal-form input[type="text"]::placeholder {
+    color: #9ca3af;
+}
+
+.modal-form input:focus,
+.modal-form .form-textarea:focus {
+    outline: none;
+    border-color: #3B82F6;
+    /* blue focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.modal-form input[type="color"] {
+    width: 60px;
+    height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid #E5E7EB;
+    margin-top: 4px;
+}
+
+/* Actions */
+.modal-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Buttons */
+.btn-ghost,
+.btn-primary,
+.btn-danger,
+#ok {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid #E5E7EB;
+    background-color: #F9FAFB;
+    color: #111827;
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.btn-ghost:hover,
 #ok:hover {
     cursor: pointer;
     background-color: #F3F4F6;
+}
+
+.btn-primary {
+    background-color: #3B82F6;
+    border-color: #3B82F6;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #2563EB;
+    border-color: #2563EB;
+}
+
+.btn-danger {
+    background-color: #EF4444;
+    border-color: #EF4444;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #DC2626;
+    border-color: #DC2626;
 }

@@ -50,48 +50,73 @@ export default function SignupPage({ setUser }) {
         }
     }
 
-    return (<>
-        <div className="page-header">
-            <h1>Sign Up</h1>
-        </div>
-        <form onSubmit={handleSubmit} className="form-container signup">
-            <table>
-                <tbody>
-                    <tr>
-                        <th><label htmlFor="id_username">Username:</label></th>
-                        <td>
-                            <input type="text" value={formData.username} name="username" minLength="3" maxLength="150" onChange={handleChange} />
-                            <br/>
-                            { errors.username && <p>{errors.username}</p> }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label htmlFor="id_email">Email:</label></th>
-                        <td>
-                            <input type="text" value={formData.email} name="email" minLength="3" maxLength="150" onChange={handleChange} />
-                            <br/>
-                            { errors.email && <p>{errors.email}</p> }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label htmlFor="id_password1">Password:</label></th>
-                        <td>
-                            <input type="password" value={formData.password} name="password" minLength="3" onChange={handleChange} />
-                            <br/>
-                            { errors.password && <p>{errors.password}</p> }
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label htmlFor="id_password2">Password confirmation:</label></th>
-                        <td>
-                            <input type="password" value={formData.confirmPassword} name="confirmPassword" onChange={handleChange}/>
-                            <br/>
-                            { errors.confirmPassword && <p>{errors.confirmPassword}</p> }
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="submit" disabled={disabledSubmitBtn} className="btn submit">Submit!</button>
-        </form>
-    </>)
+    return (
+        <>
+            <div className="login-wrapper">
+                <form onSubmit={handleSubmit} className="login-card">
+                    <h1 className="login-title">Create Account</h1>
+
+                    {/* USERNAME */}
+                    <div className="login-field">
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            value={formData.username}
+                            name="username"
+                            minLength="3"
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.username && <p className="form-error">{errors.username}</p>}
+                    </div>
+
+                    {/* EMAIL */}
+                    <div className="login-field">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            value={formData.email}
+                            name="email"
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.email && <p className="form-error">{errors.email}</p>}
+                    </div>
+
+                    {/* PASSWORD */}
+                    <div className="login-field">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            value={formData.password}
+                            name="password"
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.password && <p className="form-error">{errors.password}</p>}
+                    </div>
+
+                    {/* CONFIRM PASSWORD */}
+                    <div className="login-field">
+                        <label>Confirm Password</label>
+                        <input
+                            type="password"
+                            value={formData.confirmPassword}
+                            name="confirmPassword"
+                            onChange={handleChange}
+                            required
+                        />
+                        {errors.confirmPassword && <p className="form-error">{errors.confirmPassword}</p>}
+                    </div>
+
+                    <button type="submit" disabled={disabledSubmitBtn} className="login-btn">
+                        Sign Up
+                    </button>
+
+                    <p className="login-note">Already have an account? Log in</p>
+                </form>
+            </div>
+        </>
+    );
+
 }

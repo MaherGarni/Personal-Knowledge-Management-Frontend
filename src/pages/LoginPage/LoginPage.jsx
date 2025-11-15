@@ -1,5 +1,5 @@
 // IMPORTS
-// import "./styles.css";
+import "./styles.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -28,22 +28,44 @@ export default function LoginPage({ user, setUser }) {
         }
     }
 
-    return (<>
-        {!user &&
-            <section>
-                <form onSubmit={handleLogin} className="form-container login">
-                    <h1>Login</h1>
-                    <p>
-                        <label htmlFor="id_username">Username:</label>
-                        <input value={formData.username} type="text" name="username" maxLength="150" required id="id_username" onChange={handleChange} />
-                    </p>
-                    <p>
-                        <label htmlFor="id_password">Password:</label>
-                        <input value={formData.password} type="password" name="password" required id="id_password" onChange={handleChange} />
-                    </p>
-                    <button type="submit" className="btn submit">Login</button>
-                </form>
-            </section>
-        }
-    </>)
+    return (
+        <>
+            {!user && (
+                <div className="login-wrapper">
+                    <form onSubmit={handleLogin} className="login-card">
+                        <h1 className="login-title">Welcome Back 👋</h1>
+
+                        <div className="login-field">
+                            <label htmlFor="id_username">Username</label>
+                            <input
+                                value={formData.username}
+                                type="text"
+                                name="username"
+                                required
+                                id="id_username"
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="login-field">
+                            <label htmlFor="id_password">Password</label>
+                            <input
+                                value={formData.password}
+                                type="password"
+                                name="password"
+                                required
+                                id="id_password"
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <button type="submit" className="login-btn">Login</button>
+
+                        <p className="login-note">Track your learning. Grow every day 🌱</p>
+                    </form>
+                </div>
+            )}
+        </>
+    );
+
 }

@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, Routes, Link } from 'react-router';
+import { Route, Routes, Link, Navigate} from 'react-router';
 import { useState } from 'react';
 import AboutPage from '../AboutPage/AboutPage';
 import CategoryIndexPage from '../CategoryIndexPage/CategoryIndexPage';
@@ -22,14 +22,15 @@ function App() {
         <main>
           <Routes>
             {user ? <>
-              <Route path="/*" element={<h2>Home Page</h2>} />
+              <Route path="/*" element={<h2>In progress....</h2>} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/categories" element={<CategoryIndexPage />} />
               <Route path="/categories/:id" element={<CategoryDetailPage />} />
             </> : <>
-              <Route path="/login" element={<LoginPage user={user} setUser={setUser}/>} />
+              <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/signup" element={<SignupPage user={user} setUser={setUser} />} />
+              <Route path="/*" element={<Navigate to="/login" />} />
             </>
             }
           </Routes>

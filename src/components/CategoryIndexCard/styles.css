@@ -30,6 +30,13 @@
     color: #111827;
 }
 
+.category-toggle.placeholder {
+    display: inline-block;
+    width: 16px; /* equal to icon width */
+    height: 16px;
+    visibility: hidden; /* keeps space, hides actual element */
+}
+
 .category-detail{
     a{
         color: #111827;
