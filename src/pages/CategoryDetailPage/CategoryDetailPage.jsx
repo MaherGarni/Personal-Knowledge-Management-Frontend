@@ -39,6 +39,7 @@ export default function CategoryDetailPage() {
                 <div className="category-lessons">
                     <div className="category-lessons-header">
                         <h2>{category.name}</h2>
+                        <p>{category.rating}</p>
                     </div>
                     <div className="lessons-container">
                         <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}>Add new lesson</button>

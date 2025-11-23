@@ -9,9 +9,8 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 
 function App() {
-  // make sure useState is imported!
-  const [user, setUser] = useState(null)
-
+  const [user, setUser] = useState(null);
+  
 
   return (
     <>

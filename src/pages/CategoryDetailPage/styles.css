@@ -14,6 +14,25 @@
 
 }
 
+.category-lessons-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 8px;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #6B7280;
+        margin: 4px 0 0 0;
+    }
+}
+
 .lessons-container {
     margin-top: 16px;
 

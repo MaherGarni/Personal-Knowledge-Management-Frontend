@@ -33,7 +33,7 @@ export default function LessonDetailPage({ currLesson }) {
             <div className="lesson-detail-container">
                 <div className="lesson-detail-header">
                 <span className="greyed-out">{currLesson.updated_at}</span>
-                <span className="greyed-out"><p></p>{currLesson.score}/10</span>
+                <span className="greyed-out"><p></p>{currLesson.score}/100</span>
                 </div>
                 <div className="lesson-detail">
                     <h2>{currLesson.title}</h2>
