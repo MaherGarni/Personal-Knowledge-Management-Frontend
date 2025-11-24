@@ -1,0 +1,16 @@
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #F9FAFB;
+    padding: 1rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 300px;
+
+    .dashboard-card-header{
+        display: flex;
+        justify-content: space-between;
+    }
+}

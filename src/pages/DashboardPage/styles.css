@@ -1,0 +1,22 @@
+.dashboard-page {
+    margin: 1.5rem auto;
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    p {
+        color: #6B7280;
+    }
+}
+
+.dashboard-cards {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 1rem;
+    margin: 2rem 0 ;
+    color: #6B7280;
+}

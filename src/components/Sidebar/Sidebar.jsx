@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router"
-import { Home, Info, FolderTree, FolderKanban, LogIn, UserPlus} from "lucide-react";
+import { Home, Info, LayoutGrid, LogIn, UserPlus} from "lucide-react";
 import "./styles.css"
 
 import * as userAPI from "../../utilities/user-api"
@@ -17,9 +17,10 @@ export default function Sidebar({ user, setUser }) {
         return (
             <>
                 <nav>
+                    <p>SKill Tracker</p>
                     <ul>
                         <li>
-                            <Link to="/home">
+                            <Link to="/dashboard">
                                 <div className="sidebar-link">
                                     <Home size={18} />
                                     <p>Dashboard</p>
@@ -29,7 +30,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/categories">
                                 <div className="sidebar-link">
-                                    <FolderTree size={18} />
+                                    <LayoutGrid size={18} />
                                     <p>Categories</p>
                                 </div>
                             </Link>
