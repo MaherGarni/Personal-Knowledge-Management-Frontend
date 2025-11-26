@@ -3,41 +3,12 @@ import DashboardCard from "../../components/DashboardCard/DashboardCard"
 import { useEffect, useState } from "react"
 
 import * as dashboardAPI from "../../utilities/dashboard-api"
-export default function Dashboard() {
-    
-    // const cardsDemoData = [
-    //     {
-    //         name: "Total Skills",
-    //         icon: "Target",
-    //         data: 24,
-    //         description: "Across all categories"
-    //     },
-    //     {
-    //         name: "In Progress",
-    //         icon: "TrendingUp",
-    //         data: 5,
-    //         description: "Currently learning"
-    //     },
-    //     {
-    //         name: "Mastered Skills",
-    //         icon: "Award",
-    //         data: 19,
-    //         description: "Skills mastered"
-    //     },
-    //     {
-    //         name: "Lessons",
-    //         icon: "BookOpen",
-    //         data: 12,
-    //         description: "Total entries"
-    //     }
-    // ]
-    
+export default function Dashboard() {    
     const [cardsData, setCardsData] = useState([])
     useEffect(() => {
         async function getDahboardData() {
             const dashboardData = await dashboardAPI.index()
-            console.log("line 39",dashboardData.test_data)
-            setCardsData([...dashboardData.test_data])
+            setCardsData([...dashboardData.user_data])
         } getDahboardData()
     }, [])
 
