@@ -11,7 +11,7 @@ import DashboardPage from '../DashboardPage/DashboardPage';
 import { PanelLeft, Moon, Sun } from 'lucide-react';
 
 function App() {
-  const [user, setUser] = useState(1);
+  const [user, setUser] = useState(null);
 
 
   return (

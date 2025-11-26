@@ -15,13 +15,13 @@
 main {
     flex: 1;
     border-radius: 8px;
-    border-left: 1px solid #E5E7EB;
+    border-left: 1px solid #D1D5DB;
     background-color: #F3F4F6;
 }
 
 main .header {
     height: 60px;
-    border-bottom: 1px solid #E5E7EB;
+    border-bottom: 1px solid #D1D5DB;
     display: flex;
     justify-content: space-between;
     align-items: center;
