@@ -1,22 +1,35 @@
 'use client';
-import { Bar, BarChart } from "recharts"
-export default function BarChartComponent() {
-    const technicalMaseryOverview = [
-            { name: "Frontend Development", rating: 85 },
-            { name: "Software Design & Architecture", rating: 78 },
-            { name: "Cloud, DevOps & Infrastructure", rating: 72 },
-            { name: "Testing & Quality Assurance", rating: 80 },
-            { name: "Databases & Data Management", rating: 75 },
-            { name: "Security & Cybersecurity Awareness", rating: 70 },
-            { name: "System Design & Scalability", rating: 68 },
-            { name: "Software Engineering Practices", rating: 82 },
-            { name: "AI / Machine Learning & Data Skills", rating: 65 },
-            { name: "Core Programming & CS Fundamentals", rating: 88 },
-            { name: "Backend Development", rating: 77 },
-        ]
+import { Bar, BarChart, XAxis, YAxis, Tooltip } from "recharts"
+export default function BarChartComponent({technicalMasteryOverview}) {
+    const technicalMaseryShorterNames={
+        "Frontend Development":"Frontend Dev",
+        "Backend Development":"Backend Dev",
+        "Core Programming & CS Fundamentals":"CS Fundamentals",
+        "Software Design & Architecture":"Software Design",
+        "Databases & Data Management":"Databases",
+        "Cloud, DevOps & Infrastructure":"DevOps",
+        "Testing & Quality Assurance":"Testing",
+        "System Design & Scalability":"System Design",
+        "Security & Cybersecurity Awareness":"Security",
+        "Software Engineering Practices":"Software Engineering",
+        "AI / Machine Learning & Data Skills":"AI/ML",
+    }
+    
+    // const technicalMasteryOverviewData = technicalMasteryOverview.map(elem => {
+    //     elem["name"]= technicalMaseryShorterNames[elem.name] 
+    // })
+
+    console.log(technicalMasteryOverview[1], "line 21")
     return (
-        <BarChart width={400} height={400} data={technicalMaseryOverview}>
-            <Bar dataKey={"rating"}/>
+        <BarChart style={{ width: "100%", marginTop: "1.5rem" }} height={400} responive data={technicalMasteryOverview}>
+            <Bar dataKey={"rating"} fill="#3B82F6" radius={[8, 8, 0, 0]} />
+            <XAxis
+                dataKey={technicalMaseryShorterNames[technicalMasteryOverview.name]}
+                interval={0}
+                tick={{ fontSize: 12 }}
+            />
+            <YAxis />
+            <Tooltip />
         </BarChart>
     )
 }

@@ -7,17 +7,12 @@ import * as dashboardAPI from "../../utilities/dashboard-api"
 import BarChartComponent from "../../components/BarChartComponent/BarChartComponent"
 export default function Dashboard() {
     const [cardsData, setCardsData] = useState([])
-    // technical mastery skills [ Frontend Development,Software Design & Architecture,Cloud, DevOps & Infrastructure,Testing & Quality Assurance,Databases & Data Management,Security & Cybersecurity Awareness,System Design & Scalability,Software Engineering Practices,AI / Machine Learning & Data Skills,Core Programming & CS Fundamentals,Backend Development]
-    // just name and rating. generate randome ratings for now. rating is out of 100
-
-
-    const [currentSkillDomainOverview, setCurrentSkillDomainOverview] = useState(null)
-    console.log(currentSkillDomainOverview);
-
+    const [technicalMasteryOverview, setTechnicalMasteryOverview] = useState([])
     useEffect(() => {
         async function getDahboardData() {
             const dashboardData = await dashboardAPI.index()
-            setCardsData([...dashboardData.user_data])
+            setCardsData([...dashboardData.userStats])
+            setTechnicalMasteryOverview([...dashboardData.technicalMasteryOverview])
         } getDahboardData()
     }, [])
 
@@ -35,9 +30,15 @@ export default function Dashboard() {
                     ))}
                 </div>
                 <div className="skill-domain-overview">
-                    <h3>Skill Level Overview</h3>
-                    <p>Current proficiency across all skills</p>
-                    <BarChartComponent/>
+                    <div className="overview-header">
+                        <span
+                            className="category-color-dot"
+                            style={{ backgroundColor: "#3B82F6" }}
+                        />
+                        <h2>Technical Mastery</h2>
+                    </div>
+                    <p>Core technical skills and competencies</p>
+                    <BarChartComponent technicalMasteryOverview={technicalMasteryOverview}/>
                 </div>
             </div>
         </div>
