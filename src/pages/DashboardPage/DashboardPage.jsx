@@ -1,6 +1,5 @@
 import "./styles.css"
 import DashboardCard from "../../components/DashboardCard/DashboardCard"
-import BarChart from "../../components/BarChartComponent/BarChartComponent"
 import { useEffect, useState } from "react"
 
 import * as dashboardAPI from "../../utilities/dashboard-api"
@@ -8,6 +7,8 @@ import BarChartComponent from "../../components/BarChartComponent/BarChartCompon
 export default function Dashboard() {
     const [cardsData, setCardsData] = useState([])
     const [technicalMasteryOverview, setTechnicalMasteryOverview] = useState([])
+    // define dummy data for the soft skills and personal skills charts
+    const doftSkillsData = []
     useEffect(() => {
         async function getDahboardData() {
             const dashboardData = await dashboardAPI.index()
@@ -17,6 +18,7 @@ export default function Dashboard() {
     }, [])
 
     if (!cardsData) return (<h1>loading...</h1>)
+    if (!technicalMasteryOverview) return (<h1>loading...</h1>)
     return (
         <div className="dashboard-page">
             <div className="dashboard-content">
@@ -29,7 +31,7 @@ export default function Dashboard() {
                         <DashboardCard key={index} name={card.name} icon={card.icon} data={card.data} description={card.description} />
                     ))}
                 </div>
-                <div className="skill-domain-overview">
+                <div className="skills-overview">
                     <div className="overview-header">
                         <span
                             className="category-color-dot"
@@ -38,8 +40,33 @@ export default function Dashboard() {
                         <h2>Technical Mastery</h2>
                     </div>
                     <p>Core technical skills and competencies</p>
-                    <BarChartComponent technicalMasteryOverview={technicalMasteryOverview}/>
+                    <BarChartComponent dataSet={technicalMasteryOverview} />
                 </div>
+
+                {/* <div className="soft-personal-skills-container">
+                    <div className="skills-overview">
+                        <div className="overview-header">
+                            <span
+                                className="category-color-dot"
+                                style={{ backgroundColor: "yellow" }}
+                            />
+                            <h2>Soft & Interpersonal Skills</h2>
+                        </div>
+                        <p>Essential skills for effective communication, teamwork, and leadership</p>
+                        <BarChartComponent dataSet={technicalMasteryOverview}/>
+                    </div>
+                    <div className="skills-overview">
+                        <div className="overview-header">
+                            <span
+                                className="category-color-dot"
+                                style={{ backgroundColor: "green" }}
+                            />
+                            <h2>Personal & Habitual Skills</h2>
+                        </div>
+                        <p>Self-management and personal growth</p>
+                        <BarChartComponent dataSet={technicalMasteryOverview}/>
+                    </div>
+                </div> */}
             </div>
         </div>
     )

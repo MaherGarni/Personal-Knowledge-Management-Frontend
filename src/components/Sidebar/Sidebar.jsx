@@ -22,7 +22,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/dashboard">
                                 <div className="sidebar-link">
-                                    <Home size={18} />
+                                    <Home size={16} />
                                     <p>Dashboard</p>
                                 </div>
                             </Link>
@@ -30,7 +30,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/categories">
                                 <div className="sidebar-link">
-                                    <LayoutGrid size={18} />
+                                    <LayoutGrid size={16} />
                                     <p>Categories</p>
                                 </div>
                             </Link>
@@ -38,7 +38,7 @@ export default function Sidebar({ user, setUser }) {
                         {/* <li>
                             <Link to="/about">
                                 <div className="sidebar-link">
-                                    <Info size={18} />
+                                    <Info size={16} />
                                     <p>About</p>
                                 </div>
                             </Link>
@@ -60,7 +60,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/login">
                                 <div className="sidebar-link">
-                                    <LogIn size={18} />
+                                    <LogIn size={16} />
                                     <p>Login</p>
                                 </div>
                             </Link>
@@ -68,7 +68,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/signup">
                                 <div className="sidebar-link">
-                                    <UserPlus size={18} />
+                                    <UserPlus size={16} />
                                     <p>SignUp</p>
                                 </div>
                             </Link>
@@ -76,7 +76,7 @@ export default function Sidebar({ user, setUser }) {
                         {/* <li>
                             <Link to="/about">
                                 <div className="sidebar-link">
-                                    <Info size={18} />
+                                    <Info size={16} />
                                     <p>About</p>
                                 </div>
                             </Link>

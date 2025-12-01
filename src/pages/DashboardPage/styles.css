@@ -25,7 +25,7 @@
     color: #6B7280;
 }
 
-.skill-domain-overview {
+.skills-overview {
     background-color: #F9FAFB;
     border: 1px solid #D1D5DB;
     border-radius: 0.5rem;
@@ -45,4 +45,10 @@
     .category-color-dot {
         margin-left: 0;
     }
+}
+
+.soft-personal-skills-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
 }
