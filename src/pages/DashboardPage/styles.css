@@ -19,13 +19,13 @@
 
 .dashboard-cards {
     display: flex;
-    /* justify-content: space-between; */
     gap: 1rem;
     margin: 2rem 0;
     color: #6B7280;
 }
 
 .skills-overview {
+    width: 100%;
     background-color: #F9FAFB;
     border: 1px solid #D1D5DB;
     border-radius: 0.5rem;
