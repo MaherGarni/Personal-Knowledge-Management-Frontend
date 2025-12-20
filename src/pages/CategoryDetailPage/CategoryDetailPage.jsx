@@ -12,7 +12,7 @@ export default function CategoryDetailPage() {
     const [lessons, setLessons] = useState([])
     const [currLesson, setCurrLesson] = useState(null)
     const [openModalForm, setOpenModalForm] = useState(false)
-    
+
     const { id } = useParams()
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function CategoryDetailPage() {
                 const categoryDetailData = await categoryAPI.detail(id)
                 setCategory(categoryDetailData.category)
                 setLessons(categoryDetailData.lessons)
-                setCurrLesson(categoryDetailData.lessons[0] ? categoryDetailData.lessons[0] : null )
+                setCurrLesson(categoryDetailData.lessons[0] ? categoryDetailData.lessons[0] : null)
             } catch (err) {
                 console.log(err);
             }
@@ -30,7 +30,7 @@ export default function CategoryDetailPage() {
     }, [id])
 
     /////  huge thing dont' forget about, what about there is no lessons///////////
-    
+
     if (!category) return <h1>Loading...</h1>
 
     return (
@@ -45,17 +45,17 @@ export default function CategoryDetailPage() {
                         <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}>Add new lesson</button>
                         {
                             lessons.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category}/>
+                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} />
                             ))
                         }
                     </div>
                 </div>
                 <div className="lesson-detail-page">
-                   <LessonDetailPage currLesson={currLesson} />
+                    <LessonDetailPage currLesson={currLesson} />
                 </div>
             </div>
             {openModalForm &&
-                <FormModal openModalForm={openModalForm} setOpenModalForm={setOpenModalForm} category={category} setCategory={setCategory} setLessons={setLessons} setCurrLesson={setCurrLesson}/>
+                <FormModal openModalForm={openModalForm} setOpenModalForm={setOpenModalForm} category={category} setCategory={setCategory} setLessons={setLessons} setCurrLesson={setCurrLesson} />
             }
         </>
     )

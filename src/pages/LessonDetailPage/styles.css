@@ -22,16 +22,10 @@
 
         input {
             width: 60ch;
-            /* wraps around ~60 characters per line */
             line-height: 1.5;
             border: none;
             outline: none;
-            box-shadow: none;
         }
-
-        /* input:focus{
-            border: none;
-        } */
     }
 }
 

@@ -38,12 +38,12 @@ export default function Dashboard() {
                     <div className="overview-header">
                         <span
                             className="category-color-dot"
-                            style={{ backgroundColor: "#3B82F6" }}
+                            style={{ backgroundColor: "#5EEAD4" }}
                         />
                         <h2>Technical Mastery</h2>
                     </div>
                     <p>Core technical skills and competencies</p>
-                    <BarChartComponent dataSet={technicalMasteryOverview} color={"#3B82F6"} />
+                    <BarChartComponent dataSet={technicalMasteryOverview} color={"#5EEAD4"} />
                 </div>
 
                 <div className="soft-personal-skills-container">
@@ -51,23 +51,23 @@ export default function Dashboard() {
                         <div className="overview-header">
                             <span
                                 className="category-color-dot"
-                                style={{ backgroundColor: "yellow" }}
+                                style={{ backgroundColor: "#FCD34D" }}
                             />
                             <h2>Soft & Interpersonal Skills</h2>
                         </div>
                         <p>Essential skills for effective communication, teamwork, and leadership</p>
-                        <BarChartComponent dataSet={softSkillsOverview} color={"#e1ff00"} />
+                        <BarChartComponent dataSet={softSkillsOverview} color={"#FCD34D"} />
                     </div>
                     <div className="skills-overview">
                         <div className="overview-header">
                             <span
                                 className="category-color-dot"
-                                style={{ backgroundColor: "#00ff11" }}
+                                style={{ backgroundColor: "#86EFAC" }}
                             />
                             <h2>Personal & Habitual Skills</h2>
                         </div>
                         <p>Self-management and personal growth</p>
-                        <BarChartComponent dataSet={personalSkillsOverview} color={"#00ff11"}/>
+                        <BarChartComponent dataSet={personalSkillsOverview} color={"#86EFAC"}/>
                     </div>
                 </div>
             </div>

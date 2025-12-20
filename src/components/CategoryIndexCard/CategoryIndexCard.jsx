@@ -24,7 +24,6 @@ export default function CategoryIndexCard({ category, setCatTree }) {
                     className="category-detail"
                     style={{ paddingLeft: `${(category.hierarchy - 1) * 40}px` }}
                 >
-                    {/* Expand/collapse icon OR placeholder */}
                     {hasChildren ? (
                         <span className="category-toggle" onClick={toggleOpen}>
                             {showDetail ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
@@ -33,13 +32,11 @@ export default function CategoryIndexCard({ category, setCatTree }) {
                         <span className="category-toggle placeholder"></span>
                     )}
 
-                    {/* Color dot */}
                     <span
                         className="category-color-dot"
                         style={{ backgroundColor: category.color || "#9CA3AF" }}
                     />
 
-                    {/* Category label / link for level 3 */}
                     {category.hierarchy === 3 ? (
                         <Link to={`/categories/${category.id}`}>
                             <strong>{category.name}</strong>
@@ -49,7 +46,6 @@ export default function CategoryIndexCard({ category, setCatTree }) {
                     )}
                 </div>
 
-                {/* Action icons */}
                 <div className="category-actions">
                     <div className="overall-rating">{category.rating}</div>
                     <button onClick={() => setOpenModalUpdateColor(true)}>
@@ -70,7 +66,6 @@ export default function CategoryIndexCard({ category, setCatTree }) {
                 </div>
             </div>
 
-            {/* Render children */}
             {hasChildren && showDetail && (
                 <div className="category-children">
                     {category.children.map((child) => (
@@ -79,7 +74,6 @@ export default function CategoryIndexCard({ category, setCatTree }) {
                 </div>
             )}
 
-            {/* Modals */}
             {openModalUpdateColor && (
                 <ChangeColor
                     openModalUpdateColor={openModalUpdateColor}

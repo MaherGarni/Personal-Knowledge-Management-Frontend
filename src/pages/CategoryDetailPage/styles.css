@@ -37,7 +37,8 @@
     margin-top: 16px;
 
     .add-lesson {
-        background-color: #F9FAFB;;
+        background-color: #2563EB;
+        color: white;
         border: .5px solid #E5E7EB;
         border-radius: 8px;
         width: 100%;
@@ -56,5 +57,4 @@
     border-radius: 8px;
     background-color: #F9FAFB;
     border-left: 1px solid #D1D5DB;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
 }
