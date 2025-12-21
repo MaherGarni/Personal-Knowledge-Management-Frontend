@@ -2,7 +2,7 @@ aside {
     display: flex;
     width: 250px;
     height: 100vh;
-    background-color: #F9FAFB;
+    background-color: var(--surface-level-3);
     margin-top: 8px;
 }
 
@@ -11,7 +11,6 @@ aside nav {
     p{
         margin: 16px;
         font-size: 14px;
-        color: #6B7280;
     }
 }
 
@@ -27,17 +26,18 @@ aside li {
     }
 }
 
-aside a:hover {
-    color: #111827;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 0 8px 8px 0;
-}
 
 aside a {
     display: block;
     text-decoration: none;
-    color: #111827;
+    color: var(--text-primary)
     height: 32px;
+}
+
+aside a:hover {
+    color: var(--accent);
+    background-color: var(--accent-b);
+    border-radius: 0 8px 8px 0;
 }
 
 .sidebar-link{

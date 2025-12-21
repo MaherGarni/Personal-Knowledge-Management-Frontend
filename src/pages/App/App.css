@@ -1,5 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+--background : oklch(100% 0 204);
+--on-accent : oklch(100% 0 0);
+--accent : oklch(59.7656246099424% 0.13593750000000002 204);
+--accent-b : oklch(59.7656246099424% 0.13593750000000002 204 / 16%);
+--gradient-bg-start : oklch(59.7656246099424% 0.13593750000000002 204 / 8%);
+--gradient-bg-end : oklch(59.7656246099424% 0.13593750000000002 204 / 0%);
+--text-primary : oklch(0% 0 0);
+--text-secondary : oklch(57.61718712396409% 0.01 204);
+--text-tertiary : oklch(74.12109326625207% 0.01 204);
+--border-level-1 : oklch(70.99609328664725% 0.02 204 / 8%);
+--border-level-2 : oklch(70.99609328664725% 0.02 204 / 16%);
+--border-level-3 : oklch(70.99609328664725% 0.02 204 / 32%);
+--surface-level-1 : oklch(70.99609328664725% 0.02 204 / 4%);
+--surface-level-2 : oklch(70.99609328664725% 0.02 204 / 8%);
+--surface-level-3 : oklch(70.99609328664725% 0.02 204 / 16%);
 
+    --category-blue: #A5C3F0  // Soft blue;      /* Soft blue */
+--category-cyan: #A3E4F0  // Soft cyan;      /* Soft cyan */
+--category-purple: #C8B5F0  // Soft lavender;    /* Soft lavender */
+--category-pink: #F0B5DA  // Soft pink;      /* Soft pink */
+--category-orange: #F0B583  // Soft orange;     /* Soft orange */
+--category-amber: #F5D774  // Soft amber;      /* Soft amber */
+--category-green: #A3E8B8  // Soft green;     /* Soft green */
+--category-coral: #EFA593  // Soft coral;      /* Soft coral */
+--category-indigo: #B5AEF0  // Soft indigo;    /* Soft indigo */
+--category-mint: #A3F0D4  // Soft mint;
+}
 * {
     box-sizing: border-box;
     padding: 0;
@@ -9,19 +36,20 @@
 
 .Layout {
     display: flex;
-    background-color: #F3F4F6;
+    background-color: oklch(100% 0 240)
 }
 
 main {
     flex: 1;
     border-radius: 8px;
     border-left: 1px solid #D1D5DB;
-    background-color: #F3F4F6;
+    background-color: var(--background)
 }
 
 main .header {
     height: 60px;
-    border-bottom: 1px solid #D1D5DB;
+    background-color: var(--surface-level-1);
+    border-bottom: 1px solid var(--border-level-3);
     display: flex;
     justify-content: space-between;
     align-items: center;

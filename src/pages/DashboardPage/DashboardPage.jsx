@@ -38,12 +38,12 @@ export default function Dashboard() {
                     <div className="overview-header">
                         <span
                             className="category-color-dot"
-                            style={{ backgroundColor: "#5EEAD4" }}
+                            style={{ backgroundColor: "#A5C3F0" }}
                         />
                         <h2>Technical Mastery</h2>
                     </div>
                     <p>Core technical skills and competencies</p>
-                    <BarChartComponent dataSet={technicalMasteryOverview} color={"#5EEAD4"} />
+                    <BarChartComponent dataSet={technicalMasteryOverview} color={"#A5C3F0"} />
                 </div>
 
                 <div className="soft-personal-skills-container">
