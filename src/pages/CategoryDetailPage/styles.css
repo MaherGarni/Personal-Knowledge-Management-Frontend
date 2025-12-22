@@ -37,10 +37,10 @@
     margin-top: 16px;
 
     .add-lesson {
-        background-color: var(--accent);
+        background-color: var(--accent-a);
         color: white;
         border: .5px solid #E5E7EB;
-        border-radius: 8px;
+        border-radius: 4px;
         width: 100%;
         padding: 8px;
         margin: 16px 0;
@@ -48,7 +48,7 @@
     }
 
     .add-lesson:hover {
-        background-color: var(--accent-b);
+        background-color: var(--accent);
         cursor: pointer;
         transition: 0.2s
     }
@@ -57,6 +57,6 @@
 .lesson-detail-page {
     flex: 1;
     border-radius: 8px;
-    background-color: #F9FAFB;
-    border-left: 1px solid #D1D5DB;
+    background-color: var(--background);
+    border-left: 1px solid var(--border-level-3);
 }

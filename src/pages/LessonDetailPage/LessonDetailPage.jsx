@@ -5,7 +5,7 @@ export default function LessonDetailPage({ currLesson }) {
 
     const initialState = currLesson ? { title: currLesson.title, content: currLesson.content } : { title: "", content: "" }
     const [formData, setFormData] = useState(initialState);
-
+    let formattedDate = null;
     function handleChange(evt) {
         const updatedData = { ...formData };
         setFormData({ ...updatedData, [evt.target.name]: evt.target.value })
@@ -22,7 +22,7 @@ export default function LessonDetailPage({ currLesson }) {
     //         console.log(err);
     //     }
     if (currLesson) {
-        const formattedDate = new Date(currLesson.updated_at).toLocaleDateString("en-US", {
+        formattedDate = new Date(currLesson.updated_at).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
         });
@@ -32,7 +32,7 @@ export default function LessonDetailPage({ currLesson }) {
         <>
             <div className="lesson-detail-container">
                 <div className="lesson-detail-header">
-                <span className="greyed-out">{currLesson.updated_at}</span>
+                <span className="greyed-out">{formattedDate}</span>
                 <span className="greyed-out"><p></p>{currLesson.score}/100</span>
                 </div>
                 <div className="lesson-detail">

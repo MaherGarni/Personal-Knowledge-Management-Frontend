@@ -16,7 +16,6 @@
 
         p {
             width: 60ch;
-            /* wraps around ~60 characters per line */
             line-height: 1.5;
         }
 

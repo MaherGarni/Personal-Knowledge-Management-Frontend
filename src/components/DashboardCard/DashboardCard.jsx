@@ -29,7 +29,7 @@ export default function DashboardCard({ name, icon, data, description }) {
                         <Icon size={24} color={icons[icon].color}/>
                     </div>
                 </div>
-                <div className="data"><span style={{fontSize: "24px", fontWeight: "bold", color: "black"}}>{data}</span></div>
+                <div className="data"><span style={{fontSize: "24px", fontWeight: "bold", color : 'var(--text-primary'}}>{data}</span></div>
                 <div className="description">{description}</div>
             </div>
         </>

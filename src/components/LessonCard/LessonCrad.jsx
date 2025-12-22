@@ -16,8 +16,18 @@ export default function LessonCrad({ lesson, setCurrLesson, setLessons, category
     return (
         <>
             <div className="lesson-card" onClick={(evt) => { setCurrLesson(lesson) }}>
-                <div className="lesson-card-header">
-                    <h5>{lesson.title}</h5>
+                <div className="lesson-card-content">
+                    <div className="lesson-card-header">
+                        <h4>{lesson.title}</h4>
+                    </div>
+                    <span className="greyed-out lesson-content-preview">
+                        <p>{lesson.content}</p>
+                    </span>
+                </div>
+                <div className="date-action-container">
+                    <span className="greyed-out">
+                        <p>{formattedDate}</p>
+                    </span>
                     <div className="lesson-card-actions">
                         <button onClick={() => setOpenModalConfirmDeletion(true)}>
                             <Trash size={16} />
@@ -27,12 +37,6 @@ export default function LessonCrad({ lesson, setCurrLesson, setLessons, category
                         </button>
                     </div>
                 </div>
-                <span className="greyed-out">
-                    <p>{lesson.content}</p>
-                </span>
-                <span className="greyed-out">
-                    <p>{formattedDate}</p>
-                </span>
             </div>
             {openModalConfirmDeletion &&
                 <DeleteConformationLesson openModalConfirmDeletion={openModalConfirmDeletion} setOpenModalConfirmDeletion={setOpenModalConfirmDeletion} Lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} category={category} />
