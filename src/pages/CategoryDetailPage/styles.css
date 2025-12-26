@@ -37,10 +37,14 @@
     margin-top: 16px;
 
     .add-lesson {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
         background-color: var(--accent-a);
         color: white;
         border: .5px solid #E5E7EB;
-        border-radius: 4px;
+        border-radius: 8px;
         width: 100%;
         padding: 8px;
         margin: 16px 0;

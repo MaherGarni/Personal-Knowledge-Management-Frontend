@@ -18,7 +18,7 @@
 --surface-level-2 : oklch(70.99609328664725% 0.02 204 / 8%);
 --surface-level-3 : oklch(70.99609328664725% 0.02 204 / 16%);
 
-    --category-blue: #A5C3F0  // Soft blue;      /* Soft blue */
+--category-blue: #A5C3F0  // Soft blue;      /* Soft blue */
 --category-cyan: #A3E4F0  // Soft cyan;      /* Soft cyan */
 --category-purple: #C8B5F0  // Soft lavender;    /* Soft lavender */
 --category-pink: #F0B5DA  // Soft pink;      /* Soft pink */
@@ -45,7 +45,7 @@ main {
     flex: 1;
     border-radius: 8px;
     border-left: 1px solid #D1D5DB;
-    background-color: var(--background)
+    background-color: var(--background);
 }
 
 main .header {

@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import LessonDetailPage from "../LessonDetailPage/LessonDetailPage"
 import LessonCard from "../../components/LessonCard/LessonCrad"
 import FormModal from "../../components/Modals/FormModal"
+import { BookPlus } from "lucide-react";
 
 import * as categoryAPI from "../../utilities/category-api"
 
@@ -42,7 +43,7 @@ export default function CategoryDetailPage() {
                         <p>{category.rating}</p>
                     </div>
                     <div className="lessons-container">
-                        <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}>Add new lesson</button>
+                        <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <BookPlus size={20}/><b>Lesson</b></button>
                         {
                             lessons.map((lesson) => (
                                 <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} />

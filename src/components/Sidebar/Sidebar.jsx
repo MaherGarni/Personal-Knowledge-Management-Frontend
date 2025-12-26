@@ -22,7 +22,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/dashboard">
                                 <div className="sidebar-link">
-                                    <Home size={16} />
+                                    <Home size={20} />
                                     <p>Dashboard</p>
                                 </div>
                             </Link>
@@ -30,7 +30,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/categories">
                                 <div className="sidebar-link">
-                                    <LayoutGrid size={16} />
+                                    <LayoutGrid size={20} />
                                     <p>Categories</p>
                                 </div>
                             </Link>
@@ -60,7 +60,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/login">
                                 <div className="sidebar-link">
-                                    <LogIn size={16} />
+                                    <LogIn size={20} />
                                     <p>Login</p>
                                 </div>
                             </Link>
@@ -68,7 +68,7 @@ export default function Sidebar({ user, setUser }) {
                         <li>
                             <Link to="/signup">
                                 <div className="sidebar-link">
-                                    <UserPlus size={16} />
+                                    <UserPlus size={20} />
                                     <p>SignUp</p>
                                 </div>
                             </Link>

@@ -38,7 +38,6 @@ aside a {
 
 aside a:hover {
     color: var(--accent);
-    /* background-color: var(--accent-b); */
     border-radius: 0 8px 8px 0;
 }
 
