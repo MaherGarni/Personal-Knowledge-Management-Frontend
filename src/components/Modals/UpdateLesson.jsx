@@ -2,12 +2,15 @@ import "./styles.css"
 import { useState } from "react";
 import { X } from "lucide-react";
 
+import MismatchLesson from "./MismatchLesson";
+
 import * as categoryAPI from "../../utilities/category-api"
 
 
-export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson, category}) {
-    const initialState = { title: lesson.title, content: lesson.content, category : category.id }
+export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson, category, setCategory}) {
+    const initialState = { title: lesson.title, content: lesson.content, category: category.id, score: lesson.score, points: lesson.points }
     const [formData, setFormData] = useState(initialState);
+    const [openModalMismatch, setOpenModalMismatch] = useState(false)
 
     function handleChange(evt) {
         setFormData({ ...formData, [evt.target.name]: evt.target.value })
@@ -16,10 +19,16 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
     async function handleSubmit(evt) {
         try {
             evt.preventDefault();
-            const lessonsData = await categoryAPI.updateLesson(formData, category.id, lesson.id)
-            console.log(lessonsData)
-            setCurrLesson(lessonsData.lesson)
-            setLessons(lessonsData.lessons)
+            const lessonData = await categoryAPI.updateLesson(formData, category.id, lesson.id)
+            console.log(lessonData, "line 23")
+            if (lessonData?.failed) {
+                setOpenModalMismatch(true)
+                return
+            }
+            console.log(lessonData)
+            setCurrLesson(lessonData.lesson)
+            setLessons(lessonData.lessons)
+            setCategory(lessonData.category)
             setOpenModalForm(false)
         } catch (error) {
             console.log(error)
@@ -32,7 +41,7 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
                 <div className="modal-overlay">
                     <div className="color-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header" >
-                            <span style={{marginBottom: "8px"}}>
+                            <span style={{ marginBottom: "8px" }}>
                                 <p>Update Lesson : <strong>{formData.title}</strong></p>
                             </span>
                             <button onClick={() => setOpenModalForm(false)}>
@@ -49,6 +58,12 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
                         </form>
                     </div>
                 </div>
+            }
+            {openModalMismatch &&
+                <MismatchLesson
+                    openModalMismatch={openModalMismatch}
+                    setOpenModalMismatch={setOpenModalMismatch}
+                />
             }
         </>
     )

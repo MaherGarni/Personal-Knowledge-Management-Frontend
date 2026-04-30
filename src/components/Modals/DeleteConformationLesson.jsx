@@ -5,13 +5,14 @@ import { X } from "lucide-react";
 import * as categoryAPI from "../../utilities/category-api"
 import LessonCrad from "../LessonCard/LessonCrad";
 
-export default function DeleteConformationLesson({ openModalConfirmDeletion, setOpenModalConfirmDeletion, Lesson, setLessons, setCurrLesson, category }) {
+export default function DeleteConformationLesson({ openModalConfirmDeletion, setOpenModalConfirmDeletion, Lesson, setLessons, setCurrLesson, category, setCategory}) {
 
     async function handleSubmit(evt) {
         try {
             evt.preventDefault();
             const updatedLessons = await categoryAPI.deleteLesson(category.id, Lesson.id)
-            setLessons(updatedLessons)
+            setCategory(updatedLessons.category)
+            setLessons(updatedLessons.lessons)
             setCurrLesson(null)
             setOpenModalConfirmDeletion(false)
         } catch (error) {

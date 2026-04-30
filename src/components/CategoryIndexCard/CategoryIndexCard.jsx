@@ -13,8 +13,6 @@ export default function CategoryIndexCard({ category, setCatTree }) {
     const [openModalConfirmDeletion, setOpenModalConfirmDeletion] = useState(false);
     const [openModalCreateCategory, setOpenModalCreateCategory] = useState(false);
 
-    console.log("Rendering CategoryIndexCard for category:", category);
-
     const toggleOpen = () => setShowDetail((prev) => !prev);
 
     return (
@@ -47,7 +45,9 @@ export default function CategoryIndexCard({ category, setCatTree }) {
                 </div>
 
                 <div className="category-actions">
-                    <div className="overall-rating">{category.rating}</div>
+                    {category.hierarchy !== 1 && (
+                        <div className="overall-rating">{category.rating}</div>
+                    )}
                     <button onClick={() => setOpenModalUpdateColor(true)}>
                         <Brush size={16} />
                     </button>

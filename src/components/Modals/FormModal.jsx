@@ -43,7 +43,6 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
                                 <X size={16} />
                             </button>
                         </div>
-                        {/* <span id="modal-note"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, doloremque.</p></span> */}
                         <span className="greyed-out" style={{ margin: "4px 0" }}>
                             <p>please note that lessons unrelated to the chosen category will not be saved.</p>
                         </span>

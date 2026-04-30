@@ -30,7 +30,7 @@ export default function CategoryDetailPage() {
         getAllCategoryLessons()
     }, [id])
 
-    /////  huge thing dont' forget about, what about there is no lessons///////////
+    /////  huge thing don't forget about, what about there is no lessons ///////////
 
     if (!category) return <h1>Loading...</h1>
 
@@ -46,7 +46,7 @@ export default function CategoryDetailPage() {
                         <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <BookPlus size={20}/><b>Lesson</b></button>
                         {
                             lessons.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} />
+                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} setCategory={setCategory}/>
                             ))
                         }
                     </div>
