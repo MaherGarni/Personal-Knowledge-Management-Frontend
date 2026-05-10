@@ -15,6 +15,7 @@ export default function ChangeColor({
         parent: category.parent,
         hierarchy: category.hierarchy,
         color: category.color || "#60A5FA",
+        reting : category.reting
     };
     const [formData, setFormData] = useState(initialState);
 

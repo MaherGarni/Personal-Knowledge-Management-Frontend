@@ -5,7 +5,7 @@ import CategoryIndexCard from "../../components/CategoryIndexCard/CategoryIndexC
 
 import * as categoryAPI from "../../utilities/category-api"
 
-export default function CategoryIndexPage() {
+export default function CategoryIndexPage({ user }) {
     const [catTree, setCatTree] = useState([]);
 
     useEffect(() => {
@@ -21,8 +21,7 @@ export default function CategoryIndexPage() {
     }, [])
 
 
-
-    const displayAllCategories = catTree.map((c, ind) => <CategoryIndexCard key={ind} category={c} setCatTree={setCatTree}/>);
+    const displayAllCategories = catTree.map((c, ind) => <CategoryIndexCard key={ind} category={c} setCatTree={setCatTree} user={user} />);
 
     return (
         <>

@@ -4,6 +4,9 @@ import { useParams } from 'react-router'
 import LessonDetailPage from "../LessonDetailPage/LessonDetailPage"
 import LessonCard from "../../components/LessonCard/LessonCrad"
 import FormModal from "../../components/Modals/FormModal"
+
+import EvaluationMismatch from "../../components/Modals/EvaluationMismatch";
+import EvaluationSuccess from "../../components/Modals/EvaluationSuccess";
 import { BookPlus } from "lucide-react";
 
 import * as categoryAPI from "../../utilities/category-api"
@@ -12,7 +15,9 @@ export default function CategoryDetailPage() {
     const [category, setCategory] = useState(null)
     const [lessons, setLessons] = useState([])
     const [currLesson, setCurrLesson] = useState(null)
+
     const [openModalForm, setOpenModalForm] = useState(false)
+    const [openEvaluationSuccess, setOpenEvaluationSuccess] = useState(false)
 
     const { id } = useParams()
 
@@ -43,10 +48,10 @@ export default function CategoryDetailPage() {
                         <p>{category.rating}</p>
                     </div>
                     <div className="lessons-container">
-                        <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <BookPlus size={20}/><b>Lesson</b></button>
+                        <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <BookPlus size={20} /><b>Lesson</b></button>
                         {
                             lessons.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} setCategory={setCategory}/>
+                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} setCategory={setCategory} />
                             ))
                         }
                     </div>

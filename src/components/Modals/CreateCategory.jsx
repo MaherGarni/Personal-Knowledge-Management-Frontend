@@ -10,7 +10,7 @@ export default function CreateCategory({
     category,
     setCatTree,
 }) {
-    const initialState = { name: "", parent: category.id, hierarchy: 3, color: "#60A5FA" };
+    const initialState = { name: "", parent: category.id, hierarchy: 3, color: "#60A5FA"};
     const [formData, setFormData] = useState(initialState);
 
     function handleChange(evt) {

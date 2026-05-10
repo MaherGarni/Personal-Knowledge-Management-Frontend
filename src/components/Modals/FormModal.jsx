@@ -2,6 +2,10 @@ import "./styles.css"
 import { useState } from "react";
 import { X } from "lucide-react";
 import MismatchLesson from "./MismatchLesson";
+import EvaluationLoadingComponent from "./EvaluationLoadingComponent";
+import EvaluationMismatch from "./EvaluationMismatch";
+import EvaluationSuccess from "./EvaluationSuccess";
+
 
 import * as categoryAPI from "../../utilities/category-api"
 
@@ -9,6 +13,12 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
     const initialState = { title: "", content: "", category: category.id }
     const [formData, setFormData] = useState(initialState);
     const [openModalMismatch, setOpenModalMismatch] = useState(false)
+    const [openEvaluationLoading, setOpenEvaluationLoading] = useState(false)
+    const [openEvaluationMismatch, setOpenEvaluationMismatch] = useState(false)
+    const [openEvaluationSuccess, setOpenEvaluationSuccess] = useState(false)
+
+    const [lessonStats, setLessonStats] = useState({})
+    const [oldRating, setOldRating] = useState(category.rating)
 
     function handleChange(evt) {
         setFormData({ ...formData, [evt.target.name]: evt.target.value })
@@ -17,15 +27,18 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
     async function handleSubmit(evt) {
         try {
             evt.preventDefault();
+            setOpenEvaluationLoading(true)
             const categoryDetailData = await categoryAPI.createLesson(formData, category.id)
+            setOpenEvaluationLoading(false)
             if (categoryDetailData?.failed) {
-                setOpenModalMismatch(true)
+                setOpenEvaluationMismatch(true)
                 return
             }
+            setLessonStats(categoryDetailData.lessons[0])
             setCategory(categoryDetailData.category)
             setLessons(categoryDetailData.lessons)
             setCurrLesson(categoryDetailData.lessons[0])
-            setOpenModalForm(false)
+            setOpenEvaluationSuccess(true)
         } catch (error) {
             console.log(error)
         }
@@ -57,13 +70,33 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
                     </div>
                 </div>
             }
-            {openModalMismatch &&
-                <MismatchLesson
-                    openModalMismatch={openModalMismatch}
-                    setOpenModalMismatch={setOpenModalMismatch}
+            {openEvaluationLoading &&
+                <EvaluationLoadingComponent
+                    openEvaluationLoading={openEvaluationLoading}
+                    setOpenEvaluationLoading={setOpenEvaluationLoading}
+                    failedEvaluation={true}
                 />
             }
 
+            {openEvaluationMismatch &&
+                <EvaluationMismatch
+                    openEvaluationMismatch={openEvaluationMismatch}
+                    setOpenEvaluationMismatch={setOpenEvaluationMismatch}
+                    failedEvaluation={true}
+                    category={category}
+                />
+            }
+            {openEvaluationSuccess &&
+                <EvaluationSuccess
+                    openEvaluationSuccess={openEvaluationSuccess}
+                    setOpenEvaluationSuccess={setOpenEvaluationSuccess}
+                    failedEvaluation={true}
+                    lessonStats={lessonStats}
+                    category={category}
+                    oldRating={oldRating}
+                    setOpenModalForm={setOpenModalForm}
+                />
+            }
         </>
     )
 }

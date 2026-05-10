@@ -18,8 +18,10 @@
 }
 
 .lesson-card-header {
-    display: flex;
-    justify-content: space-between;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .lesson-content-preview {
