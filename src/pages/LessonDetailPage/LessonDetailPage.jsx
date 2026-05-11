@@ -12,15 +12,7 @@ export default function LessonDetailPage({ currLesson }) {
     }
 
     useEffect(() => { setFormData(currLesson) }, [currLesson])
-    // async function handleSubmit(evt) {
-    //     try {
-    //         evt.preventDefault();
-    //         const newCat = await catAPI.create(formData);
-    //         setFormData(initialState)
-    //         navigate(`/cats/${newCat.id}`)
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
+
     if (currLesson) {
         formattedDate = new Date(currLesson.updated_at).toLocaleDateString("en-US", {
             month: "short",

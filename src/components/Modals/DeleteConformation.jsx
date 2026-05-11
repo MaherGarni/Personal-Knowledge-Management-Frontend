@@ -37,8 +37,8 @@ export default function DeleteConformation({ openModalConfirmDeletion, setOpenMo
                         <span id="modal-note"><p>note theat deleting category will delete all related lessons, you want to confirm</p></span>
                         <form className="modal-form" onSubmit={handleSubmit}>
                             <div className="modal-form-actions">
-                                <button type="button" onClick={() => setOpenModalConfirmDeletion(false)}>Cancel</button>
-                                <button type="submit">Submit</button>
+                                <button className="btn-ghost" type="button" onClick={() => setOpenModalConfirmDeletion(false)}>Cancel</button>
+                                <button className="btn-primary" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>

@@ -9,11 +9,10 @@
 }
 
 .lesson-card:hover {
-    background-color: var(--background);
     cursor: pointer;
     border-radius: 8px;
     border: 1px solid var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-b);
+    /* box-shadow: 0 0 0 3px var(--accent-b); */
     transition: 0.2s
 }
 

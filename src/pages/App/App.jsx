@@ -22,12 +22,12 @@ function App() {
         </aside>
         <main>
           <div className='header'>
-            <button className='sidebar-toggle'>
+            {/* <button className='sidebar-toggle'>
               <PanelLeft size={16} />
             </button>
             <button className='theme'>
               <Sun size={16} />
-            </button>
+            </button> */}
           </div>
           <Routes>
             {user ? <>

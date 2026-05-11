@@ -1,6 +1,6 @@
 import React from 'react'
-import { Loader, Circle } from "lucide-react";
-export default function EvaluationLoadingComponent({ openEvaluationLoading, setOpenEvaluationLoading, failedEvaluation }) {
+import { Loader, Minus } from "lucide-react";
+export default function EvaluationLoadingComponent({ openEvaluationLoading, setOpenEvaluationLoading }) {
     return (
         <>
             {openEvaluationLoading &&
@@ -19,7 +19,7 @@ export default function EvaluationLoadingComponent({ openEvaluationLoading, setO
                                 <div className='stage-container'>
                                     <div className='stage-description'>
                                         <div className='stage-header'>
-                                            <div className='stage-status'><Circle size={14} /></div>
+                                            <div className='stage-status'><Minus  fill={'black'} size={14} /></div>
                                             <div className='stage-name'><p>Lesson Matching</p></div>
                                         </div>
                                         <div className='stage-brief'>
@@ -30,7 +30,7 @@ export default function EvaluationLoadingComponent({ openEvaluationLoading, setO
                                 <div className='stage-container'>
                                     <div className='stage-description'>
                                         <div className='stage-header'>
-                                            <div className='stage-status'><Circle size={14} /></div>
+                                            <div className='stage-status'><Minus  fill={'black'} size={14} /></div>
                                             <div className='stage-name'><p>Scoring Lesson</p></div>
                                         </div>
                                         <div className='stage-brief'>
@@ -41,7 +41,7 @@ export default function EvaluationLoadingComponent({ openEvaluationLoading, setO
                                 <div className='stage-container'>
                                     <div className='stage-description'>
                                         <div className='stage-header'>
-                                            <div className='stage-status'><Circle size={14} /></div>
+                                            <div className='stage-status'><Minus  fill={'black'} size={14} /></div>
                                             <div className='stage-name'><p>Updating Ratings</p></div>
                                         </div>
                                         <div className='stage-brief'>

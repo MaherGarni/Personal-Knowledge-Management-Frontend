@@ -47,7 +47,7 @@ export default function CategoryDetailPage() {
                         <h2>{category.name}</h2>
                         <p>{category.rating}</p>
                     </div>
-                    <div className="lessons-container">
+                    <div className="lessons-container" style={{overflowY : 'auto'}}>
                         <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <BookPlus size={20} /><b>Lesson</b></button>
                         {
                             lessons.map((lesson) => (

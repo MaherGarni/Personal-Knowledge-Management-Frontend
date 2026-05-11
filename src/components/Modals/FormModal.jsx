@@ -20,6 +20,8 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
     const [lessonStats, setLessonStats] = useState({})
     const [oldRating, setOldRating] = useState(category.rating)
 
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
     function handleChange(evt) {
         setFormData({ ...formData, [evt.target.name]: evt.target.value })
     }
@@ -27,6 +29,7 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
     async function handleSubmit(evt) {
         try {
             evt.preventDefault();
+            setIsSubmitting(true)
             setOpenEvaluationLoading(true)
             const categoryDetailData = await categoryAPI.createLesson(formData, category.id)
             setOpenEvaluationLoading(false)
@@ -42,14 +45,17 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
         } catch (error) {
             console.log(error)
         }
+        finally{
+            setIsSubmitting(false)
+        }
     }
 
     if (!openModalForm) return null;
     return (
         <>
             {openModalForm &&
-                <div className="modal-overlay">
-                    <div className="color-modal" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-overlay" onKeyDown={(e) => e.key === 'Tab' && e.preventDefault()}>
+                    <div className="color-modal" onClick={(e) => e.stopPropagation()}  >
                         <div className="modal-header" >
                             <p>New lesson</p>
                             <button onClick={() => setOpenModalForm(false)}>
@@ -60,11 +66,11 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
                             <p>please note that lessons unrelated to the chosen category will not be saved.</p>
                         </span>
                         <form className="modal-form" onSubmit={handleSubmit}>
-                            <input type="text" placeholder="title" name="title" value={formData.color} onChange={handleChange} />
+                            <input type="text" placeholder="title" name="title" value={formData.title} onChange={handleChange} />
                             <textarea className="form-textarea" placeholder="content" name="content" rows="5" cols="30" value={formData.content} onChange={handleChange} />
                             <div className="modal-form-actions">
-                                <button type="button" onClick={() => setOpenModalForm(false)}>Cancel</button>
-                                <button type="submit">Submit</button>
+                                <button className="btn-ghost" type="button" onClick={() => setOpenModalForm(false)}>Cancel</button>
+                                <button className="btn-primary" type="submit" disabled={isSubmitting}>Submit</button>
                             </div>
                         </form>
                     </div>

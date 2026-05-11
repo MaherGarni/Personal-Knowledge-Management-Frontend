@@ -31,11 +31,11 @@ export default function DeleteConformationLesson({ openModalConfirmDeletion, set
                                 <X size={16} />
                             </button>
                         </div>
-                        <span id="modal-note"><p>confirm delete this lesson</p></span>
+                        <span id="modal-note"><p>please note that lesson points will be deducted from the overall skill rating</p></span>
                         <form className="modal-form" onSubmit={handleSubmit}>
                             <div className="modal-form-actions">
-                                <button type="button" onClick={() => setOpenModalConfirmDeletion(false)}>Cancel</button>
-                                <button type="submit">Submit</button>
+                                <button className="btn-ghost" type="button" onClick={() => setOpenModalConfirmDeletion(false)}>Cancel</button>
+                                <button className="btn-primary" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>

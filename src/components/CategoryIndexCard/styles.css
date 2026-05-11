@@ -45,8 +45,9 @@
 
 .category-actions {
     display: flex;
-    gap: 16px;
+    gap: 20px;
     button {
+        background-color: transparent;
         border: none;
         color: #6b7280;
     }
