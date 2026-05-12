@@ -1,10 +1,12 @@
-import { Link, useNavigate } from "react-router"
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router"
 import { Home, Info, LayoutGrid, LogIn, UserPlus} from "lucide-react";
 import "./styles.css"
 
 import * as userAPI from "../../utilities/user-api"
 
 export default function Sidebar({ user, setUser }) {
+    const[isSelected, setIsSelected] = useState(false)
     const navigate = useNavigate();
 
     function handleLogout() {
@@ -20,28 +22,28 @@ export default function Sidebar({ user, setUser }) {
                     <p>SKill Tracker</p>
                     <ul>
                         <li>
-                            <Link to="/dashboard">
+                            <NavLink onClick={() => setIsSelected(true)}  className={`${isSelected ? '-selected' : ''}`}  to="/dashboard">
                                 <div className="sidebar-link">
                                     <Home size={20} />
                                     <p>Dashboard</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/categories">
+                            <NavLink onClick={() => setIsSelected(true)} to="/categories">
                                 <div className="sidebar-link">
                                     <LayoutGrid size={20} />
                                     <p>Categories</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li>
                         {/* <li>
-                            <Link to="/about">
+                            <NavLink to="/about">
                                 <div className="sidebar-link">
                                     <Info size={16} />
                                     <p>About</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li> */}
                         {/* <form id="logout-form" onSubmit={handleLogout}>
                             <button type="submit">Log out</button>
@@ -58,28 +60,28 @@ export default function Sidebar({ user, setUser }) {
                 <nav>
                     <ul>
                         <li>
-                            <Link to="/login">
+                            <NavLink to="/login">
                                 <div className="sidebar-link">
                                     <LogIn size={20} />
                                     <p>Login</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/signup">
+                            <NavLink to="/signup">
                                 <div className="sidebar-link">
                                     <UserPlus size={20} />
                                     <p>SignUp</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li>
                         {/* <li>
-                            <Link to="/about">
+                            <NavLink to="/about">
                                 <div className="sidebar-link">
                                     <Info size={16} />
                                     <p>About</p>
                                 </div>
-                            </Link>
+                            </NavLink>
                         </li> */}
                     </ul>
                 </nav>

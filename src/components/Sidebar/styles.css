@@ -28,6 +28,12 @@ aside li {
     }
 }
 
+.active{
+    font-weight: 600;
+    background-color: var(--surface-level-3);
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
 
 aside a {
     display: block;

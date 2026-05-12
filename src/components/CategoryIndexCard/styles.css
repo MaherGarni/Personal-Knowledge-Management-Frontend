@@ -6,6 +6,8 @@
     border-bottom: 1px solid #E5E7EB;
     padding: 16px 8px;
     margin-bottom: 8px;
+    animation: fadeInUp 0.2s ease-out;
+
 }
 
 .category-color-dot {
@@ -32,13 +34,15 @@
 
 .category-toggle.placeholder {
     display: inline-block;
-    width: 16px; /* equal to icon width */
+    width: 16px;
+    /* equal to icon width */
     height: 16px;
-    visibility: hidden; /* keeps space, hides actual element */
+    visibility: hidden;
+    /* keeps space, hides actual element */
 }
 
-.category-detail{
-    a{
+.category-detail {
+    a {
         color: #111827;
     }
 }
@@ -46,6 +50,7 @@
 .category-actions {
     display: flex;
     gap: 20px;
+
     button {
         background-color: transparent;
         border: none;
@@ -55,5 +60,18 @@
     button:hover {
         cursor: pointer;
         color: #111827;
+    }
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

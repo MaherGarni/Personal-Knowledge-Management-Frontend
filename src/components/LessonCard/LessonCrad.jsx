@@ -4,7 +4,7 @@ import { Trash, SquarePen } from "lucide-react";
 import DeleteConformationLesson from "../Modals/DeleteConformationLesson";
 import UpdateLesson from "../Modals/UpdateLesson";
 
-export default function LessonCrad({ lesson, setCurrLesson, setLessons, category, setCategory }) {
+export default function LessonCrad({ lesson, currLesson, setCurrLesson, setLessons, category, setCategory }) {
     const [openModalConfirmDeletion, setOpenModalConfirmDeletion] = useState(false)
     const [openModalFormUpdate, setOpenModalFormUpdate] = useState(false)
 
@@ -15,7 +15,7 @@ export default function LessonCrad({ lesson, setCurrLesson, setLessons, category
 
     return (
         <>
-            <div className="lesson-card" onClick={(evt) => { setCurrLesson(lesson) }}>
+            <div onClick={(evt) => { setCurrLesson(lesson) }} className={`lesson-card ${lesson?.id === currLesson?.id ? 'selected' : ''}`}> 
                 <div className="lesson-card-content">
                     <div className="lesson-card-header">
                         <h4>{lesson.title}</h4>
@@ -26,7 +26,7 @@ export default function LessonCrad({ lesson, setCurrLesson, setLessons, category
                 </div>
                 <div className="date-action-container">
                     <span className="greyed-out">
-                        <p>{formattedDate}</p>
+                        <p style={{marginLeft: '8px'}}>{formattedDate}</p>
                     </span>
                     <div className="lesson-card-actions">
                         <button onClick={() => setOpenModalConfirmDeletion(true)}>

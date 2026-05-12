@@ -67,7 +67,7 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
                         </span>
                         <form className="modal-form" onSubmit={handleSubmit}>
                             <input type="text" placeholder="title" name="title" value={formData.title} onChange={handleChange} />
-                            <textarea className="form-textarea" placeholder="content" name="content" rows="5" cols="30" value={formData.content} onChange={handleChange} />
+                            <textarea className="form-textarea" placeholder="A short summary of the concept, experience or insight..." name="content"value={formData.content} onChange={handleChange} />
                             <div className="modal-form-actions">
                                 <button className="btn-ghost" type="button" onClick={() => setOpenModalForm(false)}>Cancel</button>
                                 <button className="btn-primary" type="submit" disabled={isSubmitting}>Submit</button>

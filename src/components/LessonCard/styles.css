@@ -4,16 +4,24 @@
     justify-content: space-between;
     height: 150px;
     border-bottom: 1px solid var(--border-level-3);
+    border-radius: 8px;
     padding: 24px;
-    transition: 0.2s
+    transition: 0.3s;
+    animation: fadeInUp 0.2s ease-out;
+
 }
 
 .lesson-card:hover {
     cursor: pointer;
     border-radius: 8px;
     border: 1px solid var(--accent);
+    background-color: var(--background);
     /* box-shadow: 0 0 0 3px var(--accent-b); */
     transition: 0.2s
+}
+
+.selected {
+    background-color: var(--background);
 }
 
 .lesson-card-header {
@@ -51,5 +59,18 @@
     button:hover {
         cursor: pointer;
         color: #111827;
+    }
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

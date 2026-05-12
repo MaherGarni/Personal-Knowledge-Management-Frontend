@@ -7,7 +7,7 @@ import FormModal from "../../components/Modals/FormModal"
 
 import EvaluationMismatch from "../../components/Modals/EvaluationMismatch";
 import EvaluationSuccess from "../../components/Modals/EvaluationSuccess";
-import { BookPlus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 import * as categoryAPI from "../../utilities/category-api"
 
@@ -35,7 +35,6 @@ export default function CategoryDetailPage() {
         getAllCategoryLessons()
     }, [id])
 
-    /////  huge thing don't forget about, what about there is no lessons ///////////
 
     if (!category) return <h1>Loading...</h1>
 
@@ -44,20 +43,25 @@ export default function CategoryDetailPage() {
             <div className="category-layout">
                 <div className="category-lessons">
                     <div className="category-lessons-header">
-                        <h2>{category.name}</h2>
-                        <p>{category.rating}</p>
+                        <div className="category-info">
+                            <h2>{category.name}</h2>
+                            <p>{lessons.length} lessons</p>
+                        </div>
+                        <div className="category-rating">
+                            <p style={{ color: `${category.color}`, fontWeight: 'bold' }}>{category.rating}</p>
+                        </div>
                     </div>
-                    <div className="lessons-container" style={{overflowY : 'auto'}}>
-                        <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <BookPlus size={20} /><b>Lesson</b></button>
+                    <div className="lessons-container" style={{ overflowY: 'auto' }}>
+                        <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <Plus size={20} /><b>New Lesson</b></button>
                         {
                             lessons.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} setCategory={setCategory} />
+                                <LessonCard key={lesson.id} lesson={lesson} currLesson={currLesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} setCategory={setCategory} />
                             ))
                         }
                     </div>
                 </div>
                 <div className="lesson-detail-page">
-                    <LessonDetailPage currLesson={currLesson} />
+                    <LessonDetailPage currLesson={currLesson} category={category} />
                 </div>
             </div>
             {openModalForm &&
