@@ -60,6 +60,11 @@
         cursor: pointer;
         color: #111827;
     }
+    #btn-disabled {
+        background-color: var(--accent-disabled);
+        cursor: not-allowed;
+        pointer-events: none;
+    }
 }
 
 

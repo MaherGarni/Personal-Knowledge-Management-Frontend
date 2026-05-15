@@ -11,7 +11,7 @@ import { Plus } from "lucide-react";
 
 import * as categoryAPI from "../../utilities/category-api"
 
-export default function CategoryDetailPage() {
+export default function CategoryDetailPage({ user, setUser }) {
     const [category, setCategory] = useState(null)
     const [lessons, setLessons] = useState([])
     const [currLesson, setCurrLesson] = useState(null)
@@ -36,6 +36,9 @@ export default function CategoryDetailPage() {
     }, [id])
 
 
+    const isLimitReached = user.dailyCallsCounter >= user.dailyAiLimit;
+
+
     if (!category) return <h1>Loading...</h1>
 
     return (
@@ -52,10 +55,33 @@ export default function CategoryDetailPage() {
                         </div>
                     </div>
                     <div className="lessons-container" style={{ overflowY: 'auto' }}>
-                        <button className="add-lesson" onClick={() => { setOpenModalForm(true) }}> <Plus size={20} /><b>New Lesson</b></button>
+                        <button
+                            className={`add-lesson ${isLimitReached ? 'btn-disabled' : ''}`}
+                            onClick={() => { if (!isLimitReached) setOpenModalForm(true) }}
+                            disabled={isLimitReached}
+                        >
+                            <Plus size={20} /><b>New Lesson</b>
+                        </button>
+                        <div className="lessons-daily-limits">
+                            <div className="limits-data greyed-out">
+                                <p>lessons per day</p>
+                                <p>{user.dailyCallsCounter} / {user.dailyAiLimit}</p>
+                            </div>
+
+                            <div className='limits-meter progress-bar' style={{ height: '8px' }}>
+                                <div style={{
+                                    height: '100%',
+                                    width: `${user.dailyCallsCounter / user.dailyAiLimit * 100}%`,
+                                    backgroundColor: category.color,
+                                    borderRadius: '4px'
+                                }}>
+                                </div>
+                            </div>
+
+                        </div>
                         {
                             lessons.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} currLesson={currLesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} setCategory={setCategory} />
+                                <LessonCard key={lesson.id} lesson={lesson} currLesson={currLesson} setCurrLesson={setCurrLesson} setLessons={setLessons} category={category} setCategory={setCategory} user={user} setUser={setUser} />
                             ))
                         }
                     </div>
@@ -65,7 +91,7 @@ export default function CategoryDetailPage() {
                 </div>
             </div>
             {openModalForm &&
-                <FormModal openModalForm={openModalForm} setOpenModalForm={setOpenModalForm} category={category} setCategory={setCategory} setLessons={setLessons} setCurrLesson={setCurrLesson} />
+                <FormModal openModalForm={openModalForm} setOpenModalForm={setOpenModalForm} category={category} setCategory={setCategory} setLessons={setLessons} setCurrLesson={setCurrLesson} user={user} setUser={setUser} />
             }
         </>
     )

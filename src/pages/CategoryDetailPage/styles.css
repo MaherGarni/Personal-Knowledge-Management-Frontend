@@ -45,7 +45,7 @@
 
 .lessons-container {
     margin-top: 8px;
-    
+
     /* border-top: 1px solid var(--border-level-3); */
     .add-lesson {
         display: flex;
@@ -55,8 +55,8 @@
         background-color: var(--accent);
         color: white;
         border: .5px solid #E5E7EB;
-        
-    /* border-bottom: 1px solid var(--border-level-3); */
+
+        /* border-bottom: 1px solid var(--border-level-3); */
         border-radius: 8px;
         width: 100%;
         padding: 8px;
@@ -64,11 +64,31 @@
         transition: 0.2s
     }
 
+
     .add-lesson:hover {
         background-color: var(--accent-hover);
         cursor: pointer;
         transition: 0.2s
     }
+    .btn-disabled {
+        background-color: var(--accent-disabled);
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+
+.lessons-daily-limits {
+    margin: 16px 8px 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.limits-data {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
 }
 
 .lesson-detail-page {
@@ -76,4 +96,5 @@
     border-radius: 8px;
     background-color: var(--background);
     border-left: 1px solid var(--border-level-3);
+
 }

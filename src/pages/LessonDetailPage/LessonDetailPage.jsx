@@ -57,7 +57,6 @@ export default function LessonDetailPage({ currLesson, category }) {
                     <div className="lesson-detail-footer-card">
                         <p><span className="greyed-out">Points: </span>{currLesson.points}</p>
                     </div>
-                    {console.log(hexToRgba(category.color, 0.07))}
                     <div className="lesson-detail-footer-card" style={{ backgroundColor: hexToRgba(category.color, 0.08), color: category.color }}>
                         <p>{category.name}</p>
                     </div>

@@ -34,8 +34,8 @@ function App() {
               <Route path="/*" element={<h2>In progress....</h2>} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/categories" element={<CategoryIndexPage user={user}/>} />
-              <Route path="/categories/:id" element={<CategoryDetailPage />} />
+              <Route path="/categories" element={<CategoryIndexPage user={user} />} />
+              <Route path="/categories/:id" element={<CategoryDetailPage user={user} setUser={setUser} />} />
             </> : <>
               <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
               <Route path="/about" element={<AboutPage />} />

@@ -4,7 +4,7 @@ import { Trash, SquarePen } from "lucide-react";
 import DeleteConformationLesson from "../Modals/DeleteConformationLesson";
 import UpdateLesson from "../Modals/UpdateLesson";
 
-export default function LessonCrad({ lesson, currLesson, setCurrLesson, setLessons, category, setCategory }) {
+export default function LessonCrad({ lesson, currLesson, setCurrLesson, setLessons, category, setCategory, user, setUser }) {
     const [openModalConfirmDeletion, setOpenModalConfirmDeletion] = useState(false)
     const [openModalFormUpdate, setOpenModalFormUpdate] = useState(false)
 
@@ -13,9 +13,11 @@ export default function LessonCrad({ lesson, currLesson, setCurrLesson, setLesso
         day: "numeric",
     });
 
+    const isLimitReached = user.dailyCallsCounter >= user.dailyAiLimit;
+
     return (
         <>
-            <div onClick={(evt) => { setCurrLesson(lesson) }} className={`lesson-card ${lesson?.id === currLesson?.id ? 'selected' : ''}`}> 
+            <div onClick={(evt) => { setCurrLesson(lesson) }} className={`lesson-card ${lesson?.id === currLesson?.id ? 'selected' : ''}`}>
                 <div className="lesson-card-content">
                     <div className="lesson-card-header">
                         <h4>{lesson.title}</h4>
@@ -26,23 +28,28 @@ export default function LessonCrad({ lesson, currLesson, setCurrLesson, setLesso
                 </div>
                 <div className="date-action-container">
                     <span className="greyed-out">
-                        <p style={{marginLeft: '8px'}}>{formattedDate}</p>
+                        <p style={{ marginLeft: '8px' }}>{formattedDate}</p>
                     </span>
                     <div className="lesson-card-actions">
                         <button onClick={() => setOpenModalConfirmDeletion(true)}>
                             <Trash size={16} />
                         </button>
-                        <button onClick={() => setOpenModalFormUpdate(true)}>
+                        <button
+                            id={`${isLimitReached ? 'btn-disabled' : ''}`}
+                            onClick={() => setOpenModalFormUpdate(true)}
+                            disabled={isLimitReached}
+                            style={{backgroundColor : 'transparent'}}
+                        >
                             <SquarePen size={16} />
                         </button>
                     </div>
                 </div>
             </div>
             {openModalConfirmDeletion &&
-                <DeleteConformationLesson openModalConfirmDeletion={openModalConfirmDeletion} setOpenModalConfirmDeletion={setOpenModalConfirmDeletion} Lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} category={category} setCategory={setCategory}/>
+                <DeleteConformationLesson openModalConfirmDeletion={openModalConfirmDeletion} setOpenModalConfirmDeletion={setOpenModalConfirmDeletion} Lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} category={category} setCategory={setCategory} />
             }
             {openModalFormUpdate &&
-                <UpdateLesson openModalForm={openModalFormUpdate} setOpenModalForm={setOpenModalFormUpdate} lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} category={category} setCategory={setCategory}/>
+                <UpdateLesson openModalForm={openModalFormUpdate} setOpenModalForm={setOpenModalFormUpdate} lesson={lesson} setLessons={setLessons} setCurrLesson={setCurrLesson} category={category} setCategory={setCategory} user={user} setUser={setUser}/>
             }
         </>
     )

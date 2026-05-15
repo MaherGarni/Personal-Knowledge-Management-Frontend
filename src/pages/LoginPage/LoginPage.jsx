@@ -20,7 +20,6 @@ export default function LoginPage({ user, setUser }) {
         try {
             evt.preventDefault();
             const loggedInUser = await usersAPI.login(formData);
-            console.log(loggedInUser, "logged in user")
             setUser(loggedInUser);
             navigate("/categories");
         } catch (err) {

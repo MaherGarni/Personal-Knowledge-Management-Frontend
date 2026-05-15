@@ -9,7 +9,7 @@ import EvaluationSuccess from "./EvaluationSuccess";
 import * as categoryAPI from "../../utilities/category-api"
 
 
-export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson, category, setCategory }) {
+export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson, category, setCategory, user, setUser}) {
     const initialState = { title: lesson.title, content: lesson.content, category: category.id, score: lesson.score, points: lesson.points }
     const [formData, setFormData] = useState(initialState);
 
@@ -41,6 +41,7 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
             setCurrLesson(lessonData.lesson)
             setLessons(lessonData.lessons)
             setCategory(lessonData.category)
+            setUser(lessonData.user)
             setOpenEvaluationSuccess(true)
         } catch (error) {
             console.log(error)
@@ -63,6 +64,9 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
                                 <X size={16} />
                             </button>
                         </div>
+                        <span className="greyed-out" style={{ margin: "0 8px" }}>
+                            <p>note that updating lesson will consume from your daily limit.</p>
+                        </span>
                         <form className="modal-form" onSubmit={handleSubmit}>
                             <textarea className="form-textarea" placeholder="content" name="content" rows="5" cols="30" value={formData.content} onChange={handleChange} />
                             <div className="modal-form-actions">

@@ -9,7 +9,7 @@ import EvaluationSuccess from "./EvaluationSuccess";
 
 import * as categoryAPI from "../../utilities/category-api"
 
-export default function FormModal({ openModalForm, setOpenModalForm, category, setCategory, setLessons, setCurrLesson }) {
+export default function FormModal({ openModalForm, setOpenModalForm, category, setCategory, setLessons, setCurrLesson, user, setUser}) {
     const initialState = { title: "", content: "", category: category.id }
     const [formData, setFormData] = useState(initialState);
     const [openModalMismatch, setOpenModalMismatch] = useState(false)
@@ -41,6 +41,7 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
             setCategory(categoryDetailData.category)
             setLessons(categoryDetailData.lessons)
             setCurrLesson(categoryDetailData.lessons[0])
+            setUser(categoryDetailData.user)
             setOpenEvaluationSuccess(true)
         } catch (error) {
             console.log(error)
