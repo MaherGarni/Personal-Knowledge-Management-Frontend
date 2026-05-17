@@ -5,17 +5,19 @@ import MismatchLesson from "./MismatchLesson";
 import EvaluationLoadingComponent from "./EvaluationLoadingComponent";
 import EvaluationMismatch from "./EvaluationMismatch";
 import EvaluationSuccess from "./EvaluationSuccess";
+import ErrorModal from "./ErrorModal";
 
 
 import * as categoryAPI from "../../utilities/category-api"
 
-export default function FormModal({ openModalForm, setOpenModalForm, category, setCategory, setLessons, setCurrLesson, user, setUser}) {
+export default function FormModal({ openModalForm, setOpenModalForm, category, setCategory, setLessons, setCurrLesson, user, setUser }) {
     const initialState = { title: "", content: "", category: category.id }
     const [formData, setFormData] = useState(initialState);
     const [openModalMismatch, setOpenModalMismatch] = useState(false)
     const [openEvaluationLoading, setOpenEvaluationLoading] = useState(false)
     const [openEvaluationMismatch, setOpenEvaluationMismatch] = useState(false)
     const [openEvaluationSuccess, setOpenEvaluationSuccess] = useState(false)
+    const [openModalError, setOpenModalError] = useState(false)
 
     const [lessonStats, setLessonStats] = useState({})
     const [oldRating, setOldRating] = useState(category.rating)
@@ -44,9 +46,10 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
             setUser(categoryDetailData.user)
             setOpenEvaluationSuccess(true)
         } catch (error) {
-            console.log(error)
+            setOpenModalError(true)
+            return
         }
-        finally{
+        finally {
             setIsSubmitting(false)
         }
     }
@@ -68,7 +71,7 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
                         </span>
                         <form className="modal-form" onSubmit={handleSubmit}>
                             <input type="text" placeholder="title" name="title" value={formData.title} onChange={handleChange} />
-                            <textarea className="form-textarea" placeholder="A short summary of the concept, experience or insight..." name="content"value={formData.content} onChange={handleChange} />
+                            <textarea className="form-textarea" placeholder="A short summary of the concept, experience or insight..." name="content" value={formData.content} onChange={handleChange} />
                             <div className="modal-form-actions">
                                 <button className="btn-ghost" type="button" onClick={() => setOpenModalForm(false)}>Cancel</button>
                                 <button className="btn-primary" type="submit" disabled={isSubmitting}>Submit</button>
@@ -102,6 +105,12 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
                     category={category}
                     oldRating={oldRating}
                     setOpenModalForm={setOpenModalForm}
+                />
+            }
+            {openModalError &&
+                <ErrorModal
+                    openModalError={openModalError}
+                    setOpenModalError={setOpenModalError}
                 />
             }
         </>

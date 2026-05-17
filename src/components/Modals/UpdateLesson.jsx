@@ -5,17 +5,19 @@ import { X } from "lucide-react";
 import EvaluationLoadingComponent from "./EvaluationLoadingComponent";
 import EvaluationMismatch from "./EvaluationMismatch";
 import EvaluationSuccess from "./EvaluationSuccess";
+import ErrorModal from "./ErrorModal";
 
 import * as categoryAPI from "../../utilities/category-api"
 
 
-export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson, category, setCategory, user, setUser}) {
+export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, setLessons, setCurrLesson, category, setCategory, user, setUser }) {
     const initialState = { title: lesson.title, content: lesson.content, category: category.id, score: lesson.score, points: lesson.points }
     const [formData, setFormData] = useState(initialState);
 
     const [openEvaluationLoading, setOpenEvaluationLoading] = useState(false)
     const [openEvaluationMismatch, setOpenEvaluationMismatch] = useState(false)
     const [openEvaluationSuccess, setOpenEvaluationSuccess] = useState(false)
+    const [openModalError, setOpenModalError] = useState(false)
 
     const [lessonStats, setLessonStats] = useState({})
     const [oldRating, setOldRating] = useState(category.rating)
@@ -44,9 +46,10 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
             setUser(lessonData.user)
             setOpenEvaluationSuccess(true)
         } catch (error) {
-            console.log(error)
+            setOpenModalError(true)
+            return
         }
-        finally{
+        finally {
             setIsSubmitting(false)
         }
     }
@@ -99,6 +102,12 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
                     category={category}
                     oldRating={oldRating}
                     setOpenModalForm={setOpenModalForm}
+                />
+            }
+            {openModalError &&
+                <ErrorModal
+                    openModalError={openModalError}
+                    setOpenModalError={setOpenModalError}
                 />
             }
         </>
