@@ -13,6 +13,14 @@ import { PanelLeft, Moon, Sun } from 'lucide-react';
 function App() {
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    async function checkUser() {
+      const foundUser = await getUser();
+      setUser(foundUser)
+    }
+    checkUser()
+  }, [])
+
 
   return (
     <>
