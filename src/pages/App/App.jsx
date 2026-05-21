@@ -1,6 +1,6 @@
 import './App.css'
 import { Route, Routes, Link, Navigate } from 'react-router';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import AboutPage from '../AboutPage/AboutPage';
 import CategoryIndexPage from '../CategoryIndexPage/CategoryIndexPage';
 import CategoryDetailPage from '../CategoryDetailPage/CategoryDetailPage';
