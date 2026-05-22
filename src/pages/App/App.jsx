@@ -1,6 +1,6 @@
 import './App.css'
 import { Route, Routes, Link, Navigate } from 'react-router';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import AboutPage from '../AboutPage/AboutPage';
 import CategoryIndexPage from '../CategoryIndexPage/CategoryIndexPage';
 import CategoryDetailPage from '../CategoryDetailPage/CategoryDetailPage';
@@ -10,17 +10,24 @@ import LoginPage from '../LoginPage/LoginPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import { PanelLeft, Moon, Sun } from 'lucide-react';
 
+import { getUser } from '../../utilities/user-api';
+
 function App() {
   const [user, setUser] = useState(null);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function checkUser() {
       const foundUser = await getUser();
+      console.log(foundUser, 'line 21')
       setUser(foundUser)
+      setLoading(false);
     }
     checkUser()
   }, [])
 
+  if (loading) return null;
 
   return (
     <>
@@ -39,7 +46,7 @@ function App() {
           </div>
           <Routes>
             {user ? <>
-              <Route path="/*" element={<h2>In progress....</h2>} />
+              <Route path="/*" element={<Navigate to="/categories" />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/categories" element={<CategoryIndexPage user={user} />} />

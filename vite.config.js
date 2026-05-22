@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base : process.env.VITE_BASE_PATH || "/Personal-Knowledge-Management-Frontend" ,
+  base : process.env.VITE_BASE_PATH || "/",
   resolve: {
     alias: {
       "@": "/src",

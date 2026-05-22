@@ -28,7 +28,7 @@ export async function getUser() {
     try {
         const token = localStorage.getItem('token');
         if (token) {
-            const response = await sendRequest(`${url}/token/refresh/`)
+            const response = await sendRequest(`${url}token/refresh/`)
             localStorage.setItem('token', response.access);
             return response.user
         }
