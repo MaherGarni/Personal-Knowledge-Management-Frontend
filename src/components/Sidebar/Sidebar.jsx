@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router"
-import { Home, Info, LayoutGrid, LogIn, UserPlus} from "lucide-react";
+import { Home, Info, LayoutGrid, LogIn, UserPlus, LogOut} from "lucide-react";
 import "./styles.css"
 
 import * as userAPI from "../../utilities/user-api"
 
 export default function Sidebar({ user, setUser }) {
-    const[isSelected, setIsSelected] = useState(false)
+    const [isSelected, setIsSelected] = useState(false)
     const navigate = useNavigate();
 
-    function handleLogout() {
-        userAPI.logout()
+    async function handleLogout() {
+        await userAPI.logout()
         setUser(null);
         navigate("/")
     }
@@ -22,7 +22,7 @@ export default function Sidebar({ user, setUser }) {
                     <p>SKill Tracker</p>
                     <ul>
                         <li>
-                            <NavLink onClick={() => setIsSelected(true)}  className={`${isSelected ? '-selected' : ''}`}  to="/dashboard">
+                            <NavLink onClick={() => setIsSelected(true)} className={`${isSelected ? '-selected' : ''}`} to="/dashboard">
                                 <div className="sidebar-link">
                                     <Home size={20} />
                                     <p>Dashboard</p>
@@ -37,17 +37,12 @@ export default function Sidebar({ user, setUser }) {
                                 </div>
                             </NavLink>
                         </li>
-                        {/* <li>
-                            <NavLink to="/about">
-                                <div className="sidebar-link">
-                                    <Info size={16} />
-                                    <p>About</p>
-                                </div>
-                            </NavLink>
-                        </li> */}
-                        {/* <form id="logout-form" onSubmit={handleLogout}>
-                            <button type="submit">Log out</button>
-                        </form> */}
+                        <li>
+                            <div className="sidebar-link logout" onClick={() => handleLogout()}>
+                                <LogOut size={20} />
+                                <p>Logout</p>
+                            </div>
+                        </li>
                     </ul>
                 </nav>
             </>
@@ -75,14 +70,6 @@ export default function Sidebar({ user, setUser }) {
                                 </div>
                             </NavLink>
                         </li>
-                        {/* <li>
-                            <NavLink to="/about">
-                                <div className="sidebar-link">
-                                    <Info size={16} />
-                                    <p>About</p>
-                                </div>
-                            </NavLink>
-                        </li> */}
                     </ul>
                 </nav>
             </aside>
