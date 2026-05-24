@@ -41,6 +41,7 @@ export default function SignupPage({ setUser }) {
     async function handleSubmit(evt) {
         try {
             evt.preventDefault()
+            setIsSubmitting(true)
             const newUser = await usersAPI.signup(formData);
             setUser(newUser);
             setFormData(initialState)
@@ -48,6 +49,9 @@ export default function SignupPage({ setUser }) {
         } catch (err) {
             console.log(err);
             setUser(null);
+        }
+        finally {
+            setIsSubmitting(false)
         }
     }
 
