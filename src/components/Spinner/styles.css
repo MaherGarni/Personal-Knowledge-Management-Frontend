@@ -1,0 +1,53 @@
+/* Pre-made spinner styles */
+.spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+.pro-spinner {
+    border-radius: 50%;
+    /* Use a transparent base with a crisp top border for a sleek, modern fade effect */
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    animation: professional-spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Size Variants */
+.pro-spinner.small {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+}
+
+.pro-spinner.medium {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+}
+
+.pro-spinner.large {
+    width: 64px;
+    height: 64px;
+    border-width: 4px;
+}
+
+/* Color Variants (Clean modern palette) */
+
+.pro-spinner.dark {
+    border-top-color: #1f2937;
+}
+
+/* Slate Dark */
+
+/* Smooth hardware-accelerated rotation */
+@keyframes professional-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

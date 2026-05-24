@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import LessonDetailPage from "../LessonDetailPage/LessonDetailPage"
 import LessonCard from "../../components/LessonCard/LessonCrad"
 import FormModal from "../../components/Modals/FormModal"
+import Spinner from "../../components/Spinner/Spinner"
 
 import EvaluationMismatch from "../../components/Modals/EvaluationMismatch";
 import EvaluationSuccess from "../../components/Modals/EvaluationSuccess";
@@ -19,12 +20,15 @@ export default function CategoryDetailPage({ user, setUser }) {
     const [openModalForm, setOpenModalForm] = useState(false)
     const [openEvaluationSuccess, setOpenEvaluationSuccess] = useState(false)
 
+    const [isLoading, setIsLoading] = useState(true)
+
     const { id } = useParams()
 
     useEffect(() => {
         async function getAllCategoryLessons() {
             try {
                 const categoryDetailData = await categoryAPI.detail(id)
+                setIsLoading(false)
                 setCategory(categoryDetailData.category)
                 setLessons(categoryDetailData.lessons)
                 setCurrLesson(categoryDetailData.lessons[0] ? categoryDetailData.lessons[0] : null)
@@ -39,7 +43,8 @@ export default function CategoryDetailPage({ user, setUser }) {
     const isLimitReached = user.dailyCallsCounter >= user.dailyAiLimit;
 
 
-    if (!category) return <h1>Loading...</h1>
+    if (isLoading) return (<Spinner />)
+
 
     return (
         <>

@@ -3,6 +3,7 @@ import "./styles.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+
 // APIs
 import * as usersAPI from "../../utilities/user-api";
 
@@ -34,7 +35,6 @@ export default function LoginPage({ user, setUser }) {
                 <div className="login-wrapper">
                     <form onSubmit={handleLogin} className="login-card">
                         <h1 className="login-title">Welcome Back 👋</h1>
-
                         <div className="login-field">
                             <label htmlFor="id_username">Username</label>
                             <input
