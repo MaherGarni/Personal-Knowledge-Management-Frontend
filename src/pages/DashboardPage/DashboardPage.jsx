@@ -4,15 +4,19 @@ import { useEffect, useState } from "react"
 
 import * as dashboardAPI from "../../utilities/dashboard-api"
 import BarChartComponent from "../../components/BarChartComponent/BarChartComponent"
+import Spinner from "../../components/Spinner/Spinner"
+
 export default function Dashboard() {
     const [cardsData, setCardsData] = useState([])
     const [technicalMasteryOverview, setTechnicalMasteryOverview] = useState([])
     const [softSkillsOverview, setSoftSkillsOverview] = useState([])
     const [personalSkillsOverview, setPersonalSkillsOverview] = useState([])
+
+    const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
         async function getDahboardData() {
             const dashboardData = await dashboardAPI.index()
-
+            setIsLoading(false)
             setCardsData([...dashboardData.userStats])
             setTechnicalMasteryOverview([...dashboardData.technicalMasteryOverview])
             setSoftSkillsOverview([...dashboardData.softSkillsOverview])
@@ -20,8 +24,8 @@ export default function Dashboard() {
         } getDahboardData()
     }, [])
 
-    if (!cardsData) return (<h1>loading...</h1>)
-    if (!technicalMasteryOverview) return (<h1>loading...</h1>)
+    if(isLoading) return(<Spinner/>)
+
     return (
         <div className="dashboard-page">
             <div className="dashboard-content">
