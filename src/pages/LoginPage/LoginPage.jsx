@@ -13,6 +13,8 @@ export default function LoginPage({ user, setUser }) {
     const [formData, setFormData] = useState(initialState)
     const navigate = useNavigate()
 
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
     function handleChange(evt) {
         setFormData({ ...formData, [evt.target.name]: evt.target.value })
     }
@@ -20,6 +22,7 @@ export default function LoginPage({ user, setUser }) {
     async function handleLogin(evt) {
         try {
             evt.preventDefault();
+            setIsSubmitting(true)
             const loggedInUser = await usersAPI.login(formData);
             setUser(loggedInUser);
             navigate("/categories");
@@ -27,45 +30,46 @@ export default function LoginPage({ user, setUser }) {
             console.log(err)
             setUser(null);
         }
+        finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
         <>
             {!user && (
                 <div className="login-wrapper">
-                    <form onSubmit={handleLogin} className="login-card">
-                        <h1 className="login-title">Welcome Back 👋</h1>
-                        <div className="login-field">
-                            <label htmlFor="id_username">Username</label>
+                    <div className="login-card">
+                        <div className="modal-header">
+                            <p>Welcome back</p>
+                        </div>
+                        <span className="greyed-out" style={{ margin: "8px", fontSize: "14px" }}>
+                            <p>Track your learning. Grow everyday.</p>
+                        </span>
+                        <form className="modal-form" onSubmit={handleLogin}>
                             <input
                                 value={formData.username}
                                 type="text"
                                 name="username"
                                 required
-                                id="id_username"
                                 onChange={handleChange}
+                                placeholder="username"
                             />
-                        </div>
-
-                        <div className="login-field">
-                            <label htmlFor="id_password">Password</label>
                             <input
                                 value={formData.password}
                                 type="password"
                                 name="password"
                                 required
-                                id="id_password"
                                 onChange={handleChange}
+                                placeholder="password"
                             />
-                        </div>
-
-                        <button type="submit" className="login-btn">Login</button>
-
-                        <p className="login-note">Track your learning. Grow every day 🌱</p>
-                    </form>
+                            <div className="modal-form-actions" style={{ marginTop: "32px" }}>
+                                <button className="btn-primary" type="submit" disabled={isSubmitting}>Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             )}
         </>
     );
-
 }

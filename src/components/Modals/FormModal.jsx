@@ -66,7 +66,7 @@ export default function FormModal({ openModalForm, setOpenModalForm, category, s
                                 <X size={16} />
                             </button>
                         </div>
-                        <span className="greyed-out" style={{ margin: "4px 0" }}>
+                        <span className="greyed-out" style={{ margin: "8px" }}>
                             <p>please note that lessons unrelated to the chosen category will not be saved.</p>
                         </span>
                         <form className="modal-form" onSubmit={handleSubmit}>

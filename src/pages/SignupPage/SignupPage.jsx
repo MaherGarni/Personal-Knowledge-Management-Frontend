@@ -10,6 +10,7 @@ export default function SignupPage({ setUser }) {
     const navigate = useNavigate();
     const initialState = { username: "", password: "", confirmPassword: "", email: "" }
     const [formData, setFormData] = useState(initialState)
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [errors, setErrors] = useState({ username: '', password: '', email: '', confirmPassword: '' });
     let disabledSubmitBtn = Object.values(errors).every(val => val === "") && Object.values(formData).every(val => val !== "") ? false : true
 
@@ -53,70 +54,56 @@ export default function SignupPage({ setUser }) {
     return (
         <>
             <div className="login-wrapper">
-                <form onSubmit={handleSubmit} className="login-card">
-                    <h1 className="login-title">Create Account</h1>
-
-                    {/* USERNAME */}
-                    <div className="login-field">
-                        <label>Username</label>
+                <div className="login-card">
+                    <div className="modal-header">
+                        <p>Create account</p>
+                    </div>
+                    <span className="greyed-out" style={{ margin: "8px", fontSize: "14px" }}>
+                        <p>Start tracking what you learn today.</p>
+                    </span>
+                    <form className="modal-form" onSubmit={handleSubmit}>
                         <input
-                            type="text"
                             value={formData.username}
+                            type="text"
                             name="username"
-                            minLength="3"
-                            onChange={handleChange}
                             required
+                            onChange={handleChange}
+                            placeholder="username"
                         />
                         {errors.username && <p className="form-error">{errors.username}</p>}
-                    </div>
-
-                    {/* EMAIL */}
-                    <div className="login-field">
-                        <label>Email</label>
                         <input
-                            type="email"
                             value={formData.email}
+                            type="email"
                             name="email"
-                            onChange={handleChange}
                             required
+                            onChange={handleChange}
+                            placeholder="email"
                         />
                         {errors.email && <p className="form-error">{errors.email}</p>}
-                    </div>
-
-                    {/* PASSWORD */}
-                    <div className="login-field">
-                        <label>Password</label>
                         <input
-                            type="password"
                             value={formData.password}
+                            type="password"
                             name="password"
-                            onChange={handleChange}
                             required
+                            onChange={handleChange}
+                            placeholder="password"
                         />
                         {errors.password && <p className="form-error">{errors.password}</p>}
-                    </div>
-
-                    {/* CONFIRM PASSWORD */}
-                    <div className="login-field">
-                        <label>Confirm Password</label>
                         <input
-                            type="password"
                             value={formData.confirmPassword}
+                            type="password"
                             name="confirmPassword"
-                            onChange={handleChange}
                             required
+                            onChange={handleChange}
+                            placeholder="confirm password"
                         />
                         {errors.confirmPassword && <p className="form-error">{errors.confirmPassword}</p>}
-                    </div>
-
-                    <button type="submit" disabled={disabledSubmitBtn} className="login-btn">
-                        Sign Up
-                    </button>
-
-                    <p className="login-note">Already have an account? Log in</p>
-                </form>
+                        <div className="modal-form-actions" style={{ marginTop: "32px" }}>
+                            <button className="btn-primary" type="submit" disabled={isSubmitting}>Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     );
-
 }

@@ -3,7 +3,6 @@
     position: fixed;
     inset: 0;
     background-color: rgba(17, 24, 39, 0.45);
-    /* #111827 at 45% */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,6 +130,7 @@
 }
 
 .btn-ghost:hover,
+.btn-primary,
 #ok:hover {
     cursor: pointer;
     background-color: #F3F4F6;
