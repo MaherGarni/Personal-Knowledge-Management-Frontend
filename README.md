@@ -26,7 +26,7 @@ The top two levels are predefined. Users create skills at the third level under 
 
 For example: *Technical Mastery → Backend Development → Django REST Framework*. A user tracking their backend progress would create skills like *Django REST Framework*, *PostgreSQL*, and *Python* under *Backend Development*.
 
-The predefined structure ensures the AI has enough context to accurately judge how advanced each lesson is — a free-form skill name alone wouldn't provide enough signal for reliable scoring. It also keeps skills organized in a way that reflects how knowledge is actually structured in the real world.
+The hierarchical structure keeps skill creation organized. The decision to predefine the top two levels ensures the AI has the right context for meaningful and accurate rating evaluations.
 
 Once a skill is created, clicking on it opens the Skill Lessons page.
 <br>
@@ -57,32 +57,31 @@ Each lesson submission goes through a multi-step AI evaluation before being save
 
 the flow of the evaluation process :
 
-- Lesson matching : first step is to check if user's submitted lesson belongs to the skill chosen, if the lesson matches, evaluation process continues, if not, the lesson will be rejected ( example of mismatched lesson below )
+- Lesson matching: checks if the submitted lesson belongs to the chosen skill. If it matches, evaluation continues. If not, the lesson is rejected. *(mismatch lesson example below )*
 
-- Scoring Lesson : once lesson is checked, lesson details is sent to GEMENI AI API to get evaluated, the AI evaluation returns two values :
-        <ul style="list-style-type: dash;">
- 		   <li>lesson score : representing how well user demonstrate learning with the lesson.</li> 
- 		   <li>advancement level : represents how advance the lesson is based on the skill that the lesson belongs to.</li> 
+- Scoring Lesson : once matched, lesson is sent to Gemeni AI API for evaluation, the AI returns two values :
+        <ul style="list-style-type: square">
+ 		   <li>**lesson score** : how well user demonstrate understanding of the topic.</li> 
+ 		   <li>**advancement level** : represents how advance the lesson is based on the skill it belongs to.</li> 
 
-these two values are used in a formula to calculate lesson points, the better the lesson score and the more advance the lesson is, the higher points the lesson will received.<br>
-once lesson scored and points calculated, evaluation data is added to the lesson and go to the last step the submission flow.
+These two values are used in a formula to calculate lesson points. The better the lesson quality and the more advanced the topic is, the higher points the lesson will received.<br>
+
+Once evaluated, the score and points are saved with the lesson entry.
         </ul>
-- Updating Ratings: once lesson is evaluated, points will get added to the skill that the lesson belongs to. after skill rating is updated, the skill area rating which the skill falls under also get's updated with the updated skill rating.
-
-
-once evaluation process is done, new submitted lesson get's saved and shown to the user.
+- Updating Ratings: lesson points are added to the skill rating. and skill area that the skill belongs to is then updated as well.
 
 #### Lesson Mismatch
-lessons that doesn't belong to the selected skill will be rejected, and mismatch lesson shown to the user
+lessons that don't belong to the selected skill will be rejected, and mismatch message shown to the user
 
 
 ![lesson mismtach](./assets/Lesson-submission-mismatch.gif)
 <br>
 <br>
 ### Dashboard page
-this page shows some user stats as well as an overview of the skill ratings across different skill domains.
+This page shows user stats and an overview of skill ratings across different skill domains.
 
 ![Dashboard Page](./assets/Dashboard.png)
+*(Data shown belongs to a demo account.)*
 
 
 
