@@ -8,6 +8,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
+import Spinner from '../../components/Spinner/Spinner';
 import { PanelLeft, Moon, Sun } from 'lucide-react';
 
 import { getUser } from '../../utilities/user-api';
@@ -20,14 +21,13 @@ function App() {
   useEffect(() => {
     async function checkUser() {
       const foundUser = await getUser();
-      console.log(foundUser, 'line 21')
       setUser(foundUser)
       setLoading(false);
     }
     checkUser()
   }, [])
 
-  if (loading) return null;
+  if (loading) return <Spinner />;
 
   return (
     <>
