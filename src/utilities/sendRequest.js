@@ -1,4 +1,5 @@
 export default async function sendRequest(url, method = "GET", payload) {
+	const backendUrl = import.meta.env.VITE_BACKEND_URL;
 	const token = localStorage.getItem('token');
 
 	const options = { method };
@@ -14,7 +15,7 @@ export default async function sendRequest(url, method = "GET", payload) {
     }
 
 	try {
-		const res = await fetch(`https://personal-knowledge-management-backend.onrender.com${url}`, options);
+		const res = await fetch(`${backendUrl}${url}`, options);
 		if (res.ok) return res.json();
 	} catch (err) {
 		console.log(err, "error send in request");
