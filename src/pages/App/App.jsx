@@ -17,6 +17,21 @@ function App() {
   const [user, setUser] = useState(null);
 
   const [loading, setLoading] = useState(true);
+  
+  if (window.innerWidth < 768) {
+    return (
+      <div className="login-wrapper">
+        <div className="login-card">
+          <div className="modal-header">
+            <p>Disclaimer</p>
+          </div>
+          <span className="greyed-out" style={{ margin: "8px", fontSize: "14px" }}>
+            <p>This app is designed for desktop use. Please switch to a larger screen.</p>
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   useEffect(() => {
     async function checkUser() {

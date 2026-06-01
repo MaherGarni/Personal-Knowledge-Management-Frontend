@@ -49,9 +49,11 @@ export default function CategoryIndexCard({ category, setCatTree, user }) {
                     {category.hierarchy !== 1 && (
                         <div className="overall-rating">{category.rating}</div>
                     )}
-                    <button onClick={() => setOpenModalUpdateColor(true)}>
-                        <Brush size={16} />
-                    </button>
+                    {category.hierarchy === 3  && (
+                        <button onClick={() => setOpenModalUpdateColor(true)}>
+                            <Brush size={16} />
+                        </button>
+                    )}
                     {category.hierarchy === 2 && (
                         <button onClick={() => setOpenModalCreateCategory(true)}>
                             <Plus size={16} />

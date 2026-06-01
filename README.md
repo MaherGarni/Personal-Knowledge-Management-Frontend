@@ -94,8 +94,51 @@ This page shows user stats and an overview of skill ratings across different ski
 - **Vite (Environment)**   
 
 ## Project Links  
+- **[Live App](https://personal-knowledge-management-front.vercel.app)
 - **[Backend Repo](https://github.com/MaherGarni/Personal-Knowledge-Management-Backend)**  
-## Icebox Features  
+
+## Local Setup
+
+> It's recommended to set up the backend first before running the frontend. Follow the backend setup instructions [here](https://github.com/MaherGarni/Personal-Knowledge-Management-Backend#local-setup).
+
+Before starting, make sure you have the following installed:
+
+- Node.js
+
+### Frontend Setup
+
+1. Clone the repository
+```bash
+   git clone https://github.com/MaherGarni/Personal-Knowledge-Management-Frontend
+```
+
+2. Install dependencies
+```bash
+   npm install
+```
+
+3. Create a `.env` file in the project root
+
+```
+VITE_BACKEND_URL=http://127.0.0.1:8000  # your local backend URL
+```
+4. Start the development server
+```bash
+   npm run dev
+```
+
+Frontend is now running at `http://localhost:5173`
+
+## What I Learned
+
+- Translating a personal problem into a software solution — making deliberate architectural decisions with tradeoffs in mind, and building logic to support the solution.
+- Became genuinely comfortable with the full-stack cycle — knowing where to start, how the pieces connect, and how to debug across layers.
+- Worked with an external AI API — built prompts, handled different response types, and designed the lesson evaluation flow around AI output. Also implemented usage limits with daily resets to manage API consumption.
+- Deployed a full-stack app and got a real taste of production — environment variables, cross-service configuration, and how different it is from local development.
+
+
+
+## Icebox Features
+- Allow users to fully define their own skill hierarchy while maintaining category integrity for accurate AI evaluation.
 - Lesson attachments (images, files, code snippets)  
-- Additional learning domains (not only tech)
-- Search functionality 
+
