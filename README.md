@@ -94,7 +94,7 @@ This page shows user stats and an overview of skill ratings across different ski
 - **Vite (Environment)**   
 
 ## Project Links  
-- **[Live App](https://personal-knowledge-management-front.vercel.app)
+- **[Live App](https://personal-knowledge-management-front.vercel.app)**
 - **[Backend Repo](https://github.com/MaherGarni/Personal-Knowledge-Management-Backend)**  
 
 ## Local Setup
