@@ -2,6 +2,7 @@
 import "./styles.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import UnauthorizedModal from "../../components/Modals/UnauthorizedModal";
 
 
 // APIs
@@ -11,6 +12,7 @@ import * as usersAPI from "../../utilities/user-api";
 export default function LoginPage({ user, setUser }) {
     const initialState = { username: "", password: "" }
     const [formData, setFormData] = useState(initialState)
+    const [openModalError, setOpenModalError] = useState(false)
     const navigate = useNavigate()
 
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -26,9 +28,9 @@ export default function LoginPage({ user, setUser }) {
             const loggedInUser = await usersAPI.login(formData);
             setUser(loggedInUser);
             navigate("/categories");
-        } catch (err) {
-            console.log(err)
+        } catch (error) {
             setUser(null);
+            setOpenModalError(true)
         }
         finally {
             setIsSubmitting(false)
@@ -70,6 +72,12 @@ export default function LoginPage({ user, setUser }) {
                     </div>
                 </div>
             )}
+            {openModalError &&
+                <UnauthorizedModal
+                    openModalError={openModalError}
+                    setOpenModalError={setOpenModalError}
+                />
+            }
         </>
     );
 }

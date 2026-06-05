@@ -71,7 +71,7 @@ export default function UpdateLesson({ openModalForm, setOpenModalForm, lesson, 
                             <p>note that updating lesson will consume from your daily limit.</p>
                         </span>
                         <form className="modal-form" onSubmit={handleSubmit}>
-                            <textarea className="form-textarea" placeholder="content" name="content" rows="5" cols="30" value={formData.content} onChange={handleChange} />
+                            <textarea className="form-textarea" placeholder="content" name="content" rows="5" cols="30" value={formData.content} onChange={handleChange} required/>
                             <div className="modal-form-actions">
                                 <button className="btn-ghost" type="button" onClick={() => setOpenModalForm(false)}>Cancel</button>
                                 <button className="btn-primary" type="submit" disabled={isSubmitting}>Submit</button>

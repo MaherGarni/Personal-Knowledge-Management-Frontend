@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+import InvalidUsernameModal from "../../components/Modals/InvalidUsernameModal.jsx";
+
 
 // APIs
 import * as usersAPI from "../../utilities/user-api.js"
@@ -11,6 +13,7 @@ export default function SignupPage({ setUser }) {
     const initialState = { username: "", password: "", confirmPassword: "", email: "" }
     const [formData, setFormData] = useState(initialState)
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [openModalError, setOpenModalError] = useState(false)
     const [errors, setErrors] = useState({ username: '', password: '', email: '', confirmPassword: '' });
     let disabledSubmitBtn = Object.values(errors).every(val => val === "") && Object.values(formData).every(val => val !== "") ? false : true
 
@@ -47,8 +50,8 @@ export default function SignupPage({ setUser }) {
             setFormData(initialState)
             navigate("/categories")
         } catch (err) {
-            console.log(err);
             setUser(null);
+            setOpenModalError(true)
         }
         finally {
             setIsSubmitting(false)
@@ -108,6 +111,12 @@ export default function SignupPage({ setUser }) {
                     </form>
                 </div>
             </div>
+            {openModalError &&
+                <InvalidUsernameModal
+                    openModalError={openModalError}
+                    setOpenModalError={setOpenModalError}
+                />
+            }
         </>
     );
 }

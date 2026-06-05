@@ -8,7 +8,7 @@ export async function signup(formData) {
         return response.user
     } catch(err) {
         localStorage.removeItem('token');
-        return null;
+        return response.user;
     }
 }
 
@@ -17,9 +17,9 @@ export async function login(formData) {
         const response = await sendRequest(`${url}login/`, "POST", formData)
         localStorage.setItem('token', response.access);
         return response.user
-    } catch (err) {
+    } catch (error) {
         localStorage.removeItem('token');
-        return null;
+        return response.user
     }
 }
 
